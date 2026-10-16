@@ -19,13 +19,13 @@ const META = {
   name: '배진혁',
   sid: '20231675',
   course: '소셜미디어 · 플랫폼의 소셜화',
-  accent: '#2470F5',
+  accent: '#FEE500',
   guide: false,
 };
 </script>
 <style>
 :root{
-  --accent:#3156D3;
+  --accent:#FEE500;
   --acc-soft:color-mix(in srgb,var(--accent) 9%,#fff);
   --acc-line:color-mix(in srgb,var(--accent) 38%,#fff);
   --ink:#18202B; --muted:#5A6573; --faint:#8A94A3; --line:#DDE2E9; --soft:#F1F3F6; --bg:#F7F8FA; --card:#fff;
@@ -48,7 +48,7 @@ section.on{opacity:1;visibility:visible;transition:opacity .4s ease}
 .hd{display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:start}
 .eyebrow{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:700;color:var(--muted);margin-bottom:12px}
 .eyebrow .no{font-size:20px;font-weight:900;color:#fff;background:var(--accent);padding:3px 12px;border-radius:8px;font-variant-numeric:tabular-nums}
-.eyebrow .tier{font-size:18px;font-weight:800;color:var(--accent);padding:2px 12px;border-radius:999px;border:2px solid var(--acc-line)}
+.eyebrow .tier{font-size:18px;font-weight:800;color:var(--accent-ink);padding:2px 12px;border-radius:999px;border:2px solid var(--acc-line)}
 h2{font-size:48px;font-weight:900;line-height:1.22;letter-spacing:-.02em;text-wrap:balance}
 
 /* 작성 안내: 발표 모드에서는 자리만 남기고 숨겨요(두 모드의 배치를 같게 하려고) */
@@ -62,12 +62,12 @@ body:not(.guide) .hint{visibility:hidden}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 26px;box-shadow:0 6px 20px rgba(24,32,43,.05)}
 .col{display:flex;flex-direction:column;gap:18px;min-width:0}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.k{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:800;color:var(--accent);margin-bottom:6px}
+.k{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:800;color:var(--accent-ink);margin-bottom:6px}
 .v{font-size:25px;font-weight:700;line-height:1.4}
 .d{font-size:21px;color:var(--muted);line-height:1.5}
 .sub{font-size:20px;font-weight:800;color:var(--muted)}
 .ic{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
+h3 .ic{width:1.05em;height:1.05em;color:var(--accent-ink)}
 .num{flex:none;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;font-size:21px;font-weight:900;font-style:normal;display:flex;align-items:center;justify-content:center}
 .src{position:absolute;left:112px;right:440px;bottom:40px;font-size:16px;color:var(--muted)}
 
@@ -83,7 +83,7 @@ h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
 /* 태그: 공식 설명 / 내 해석 / 확인됨 / 가능성 / 계획 */
 .tag{display:inline-flex;align-items:center;gap:6px;width:fit-content;font-size:16px;font-weight:800;padding:3px 12px;border-radius:999px;white-space:nowrap}
 .tag.off{background:var(--accent);color:#fff}
-.tag.mine{border:2px dashed var(--accent);color:var(--accent);padding:1px 10px}
+.tag.mine{border:2px dashed var(--accent);color:var(--accent-ink);padding:1px 10px}
 .tag.ok,.tag.g{background:var(--good-soft);color:var(--good)}
 .tag.maybe{background:var(--warn-soft);color:var(--warn)}
 .tag.b{background:var(--bad-soft);color:var(--bad)}
@@ -100,7 +100,7 @@ h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
 .cv{position:relative;display:grid;grid-template-columns:1fr auto;gap:80px;align-items:center}
 .cover .eyebrow{font-size:26px}
 .cover h1{font-size:96px;font-weight:900;line-height:1.16;letter-spacing:-.03em;margin:14px 0 40px}
-.cover .hl{color:var(--accent)}
+.cover .hl{color:var(--accent-ink)}
 .cq{display:flex;align-items:center;gap:18px;width:fit-content;font-size:32px;font-weight:700;padding:20px 30px;background:#fff;border-left:6px solid var(--accent);border-radius:0 16px 16px 0;box-shadow:0 6px 20px rgba(24,32,43,.06)}
 .cq .k{margin:0;font-size:18px;white-space:nowrap}
 .who{display:flex;align-items:center;gap:18px;margin-top:48px;font-size:28px;font-weight:700;color:var(--muted)}
@@ -116,7 +116,7 @@ h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
 .w3 dd{font-size:23px;font-weight:700;margin-top:2px}
 .scope{display:flex;align-items:center;gap:26px;padding:16px 24px;border-radius:16px;border:2px solid var(--ink);font-size:21px;background:#fff}
 .scope .sk{flex:none;font-size:17px;font-weight:900;color:#fff;background:var(--ink);padding:4px 12px;border-radius:8px}
-.scope b{color:var(--accent);margin-right:8px}
+.scope b{color:var(--accent-ink);margin-right:8px}
 
 /* 3 Tier 1 배경 */
 .t1{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:start}
@@ -134,7 +134,7 @@ h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
 .t2{display:flex;flex-direction:column;gap:18px}
 .flow{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:56px}
 .step{position:relative;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;padding:20px}
-.step+.step::before{content:"→";position:absolute;left:-47px;top:50%;transform:translateY(-50%);font-size:38px;font-weight:900;color:var(--accent)}
+.step+.step::before{content:"→";position:absolute;left:-47px;top:50%;transform:translateY(-50%);font-size:38px;font-weight:900;color:var(--accent-ink)}
 .step .shot{--w:186px;border-radius:26px}
 .step .txt{display:flex;flex-direction:column;gap:10px;padding-top:4px}
 .step .k{margin:0;font-size:21px}
@@ -155,13 +155,13 @@ h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
 .tiles{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:14px}
 .tile{display:flex;flex-direction:column;gap:6px;padding:18px 20px}
 .tile h3{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:900}
-.tile .v{font-size:23px;color:var(--accent)}
+.tile .v{font-size:23px;color:var(--accent-ink)}
 .tile .d{font-size:18px}
 .move{display:flex;flex-direction:column;gap:18px;padding:24px 28px}
 .move h3,.cpt h3{display:flex;align-items:center;gap:10px;font-size:25px;font-weight:900}
 .apps{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px}
 .apps span{font-size:23px;font-weight:800;text-align:center;padding:14px;border-radius:16px;border:2px solid var(--line);background:var(--soft)}
-.apps .now{border-color:var(--accent);background:var(--acc-soft);color:var(--accent)}
+.apps .now{border-color:var(--accent);background:var(--acc-soft);color:var(--accent-ink)}
 .apps .arr{border:0;background:none;padding:0;font-size:34px;color:var(--faint)}
 .lose{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
 .lose>div{padding:16px 18px;border-radius:14px;background:var(--soft)}
@@ -214,7 +214,7 @@ h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
 .ba{display:flex;align-items:center;gap:16px}
 .ba .shot{--w:248px}
 .ba .new .shot{border-color:var(--accent)}
-.ba .new figcaption{color:var(--accent)}
+.ba .new figcaption{color:var(--accent-ink)}
 .steps{display:flex;flex-direction:column;gap:14px}
 .steps li{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;padding:18px 24px}
 .steps .k{margin-bottom:4px}
@@ -243,7 +243,7 @@ h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
 .end{justify-content:center;gap:44px}
 .end::before{content:"";position:absolute;left:0;top:0;bottom:0;width:18px;background:var(--accent)}
 .concl{font-size:56px;font-weight:800;line-height:1.55;letter-spacing:-.015em;max-width:1560px;text-wrap:pretty}
-.concl em{font-style:normal;color:var(--accent);background:var(--acc-soft);padding:0 6px;border-radius:10px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.concl em{font-style:normal;color:var(--accent-ink);background:var(--acc-soft);padding:0 6px;border-radius:10px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .concl em.neg{color:var(--bad);background:var(--bad-soft)}
 .qa{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:700;color:var(--muted)}
 .end .hint{position:absolute;right:112px;top:72px;width:520px}
@@ -253,7 +253,7 @@ h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
 .refs h3{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;padding-bottom:14px;margin-bottom:16px;border-bottom:2px solid var(--ink)}
 .refs ol{counter-reset:r;display:flex;flex-direction:column;gap:14px}
 .refs li{counter-increment:r;position:relative;padding-left:30px;font-size:19px;line-height:1.55}
-.refs li::before{content:counter(r);position:absolute;left:0;font-weight:900;color:var(--accent)}
+.refs li::before{content:counter(r);position:absolute;left:0;font-weight:900;color:var(--accent-ink)}
 
 /* 위 진행 막대(권장 시간 비율) · 아래 쪽번호 */
 #prog{position:absolute;left:0;right:0;top:0;height:8px;display:flex;gap:3px;z-index:5}
@@ -288,16 +288,236 @@ section{padding:60px 88px 92px;gap:22px}
 .g2 .duo .card,.g2 .reason{display:flex;flex-direction:column;justify-content:center}.g2 .reason .v{font-size:36px;margin-bottom:12px}.g2 .reason .d{max-width:1180px}
 .w3{gap:18px}.w3 div{padding:16px 20px}.w3 dt{font-size:20px}.w3 dd{font-size:27px;line-height:1.45}.scope{font-size:23px;gap:24px;padding:14px 22px}.scope .sk{font-size:20px}
 .t1{grid-template-columns:610px 1fr;grid-template-rows:1fr 178px;gap:24px 32px;align-items:stretch}.t1 .cmp{justify-content:center;align-self:center}.t1>.col{justify-content:space-between;gap:18px}.t1 .press{padding:22px 28px}.t1 .said{padding:20px 28px}.t1 .said .d{font-size:24px}.cmp figcaption{font-size:23px}
-.timeline{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch}.timeline>div{border-top:5px solid var(--accent);padding:18px 24px;background:#fff;border-radius:0 0 16px 16px;display:flex;flex-direction:column;gap:7px}.timeline time{font-size:22px;font-weight:800;color:var(--accent)}.timeline b{font-size:29px}.timeline span{font-size:23px;color:var(--muted)}
+.timeline{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch}.timeline>div{border-top:5px solid var(--accent);padding:18px 24px;background:#fff;border-radius:0 0 16px 16px;display:flex;flex-direction:column;gap:7px}.timeline time{font-size:22px;font-weight:800;color:var(--accent-ink)}.timeline b{font-size:29px}.timeline span{font-size:23px;color:var(--muted)}
 .flow{flex:1;min-height:0;gap:42px}.step{align-items:center;gap:24px;padding:22px}.step+.step::before{left:-37px}.step .shot{width:210px}.step .k{font-size:24px}.step .v{font-size:30px}.t2{gap:18px}.mrow{flex:0 0 210px}.mrow .mech{padding:20px 22px}.mrow h3{font-size:27px}.mrow .d{font-size:24px}.mrow:has(.pick) .mech:not(.pick){opacity:.72}
 .t3{gap:24px 30px;grid-template-rows:1fr 174px}.stock{gap:24px;align-items:center}.stock .shot{width:250px;align-self:center}.stock .col{height:100%}.tiles{flex:1;gap:18px}.tile{padding:24px}.tile h3{font-size:25px}.tile .v{font-size:29px}.tile .d{font-size:23px}.move{gap:22px;justify-content:center}.move h3,.cpt h3{font-size:28px}.apps span{font-size:27px;padding:18px}.lose{flex:0}.lose>div{padding:22px}.lose li{font-size:25px;margin-top:12px}.cpt{justify-content:center}.cpt .d{font-size:24px}
 .factors{display:flex;flex-direction:column;gap:12px}.mol{height:735px;margin:0;border-spacing:0 12px}.mol thead th{font-size:22px}.mol tbody th,.mol tbody td{padding:18px 26px}.mol tbody th{width:510px}.mol tbody th b{font-size:29px}.mol tbody th small{font-size:21px}.mol td:last-child{font-size:26px}.mol .rate{font-size:25px}.legend{font-size:20px}.legend .rate{font-size:18px}
 .t7{gap:22px}.sw2{flex:1;min-height:0;gap:26px}.sw{gap:20px 24px;padding:24px 28px}.sw h3{font-size:33px}.sw .shot{width:230px}.sw dt{font-size:21px}.sw dd{font-size:25px;line-height:1.48}.why1{padding:19px 26px}.why1 .v{font-size:28px}
-.time-plot{margin-top:12px;padding:14px 16px;background:var(--soft);border-radius:12px}.time-plot p{font-size:19px;font-weight:700;margin-bottom:13px}.time-track{height:16px;background:#DDE2E9;position:relative;border-radius:8px}.time-range{position:absolute;left:16.6667%;right:0;top:0;bottom:0;background:var(--acc-line);border-radius:8px}.time-track i{position:absolute;left:16.6667%;height:28px;top:-6px;border-left:5px solid var(--accent)}.time-labels{position:relative;height:46px;font-size:16px;margin-top:12px}.time-labels span{position:absolute;left:0;top:0}.time-labels b{position:absolute;left:16.6667%;top:23px;transform:translateX(-25%);white-space:nowrap;color:var(--accent)}.time-labels strong{position:absolute;right:0;top:0;color:var(--ink)}
+.time-plot{margin-top:12px;padding:14px 16px;background:var(--soft);border-radius:12px}.time-plot p{font-size:19px;font-weight:700;margin-bottom:13px}.time-track{height:16px;background:#DDE2E9;position:relative;border-radius:8px}.time-range{position:absolute;left:16.6667%;right:0;top:0;bottom:0;background:var(--acc-line);border-radius:8px}.time-track i{position:absolute;left:16.6667%;height:28px;top:-6px;border-left:5px solid var(--accent)}.time-labels{position:relative;height:46px;font-size:16px;margin-top:12px}.time-labels span{position:absolute;left:0;top:0}.time-labels b{position:absolute;left:16.6667%;top:23px;transform:translateX(-25%);white-space:nowrap;color:var(--accent-ink)}.time-labels strong{position:absolute;right:0;top:0;color:var(--ink)}
 .t8{gap:20px}.situ{padding:17px 26px}.situ .v{font-size:27px}.prop{grid-template-columns:700px 1fr;gap:30px}.ba{justify-content:center;gap:18px}.ba .shot{width:300px}.ba figcaption{font-size:23px}.prop>.col{height:100%;gap:16px}.steps{flex:1;gap:14px}.steps li{flex:1;padding:20px 24px;align-items:center}.steps .v{font-size:28px}.chg{padding:16px 22px}.chg span{font-size:23px}.prop>.col>.d{font-size:23px}
 .evidence{display:grid;grid-template-rows:1fr 220px;gap:22px}.stats{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;min-height:0}.stat-card{display:flex;flex-direction:column;padding:24px 30px;min-height:0}.stat-card h3{font-size:32px;line-height:1.35;min-height:44px}.stat-card .k{font-size:21px;margin-bottom:8px}.chart-unit{font-size:19px;color:var(--muted);margin-top:7px}.percent-chart{margin:18px 0 15px;display:flex;flex-direction:column;gap:24px;flex:1;justify-content:center;min-height:190px}.percent-chart.single{gap:24px;min-height:140px}.bar-row p{font-size:25px;font-weight:700;margin-bottom:9px}.bar-track{height:38px;background:repeating-linear-gradient(to right,#EEF1F6 0, #EEF1F6 calc(25% - 1px),#D3DAE4 calc(25% - 1px),#D3DAE4 25%);position:relative;border-left:2px solid #B7C0CC;border-right:2px solid #B7C0CC}.bar-fill{display:block;height:100%;background:var(--accent)}.bar-fill.second{background:#5088EB}.bar-fill.warning{background:var(--bad)}.bar-track b{position:absolute;top:-5px;margin-left:12px;font-size:35px;font-weight:900;line-height:1.35;color:var(--ink);white-space:nowrap}.chart-axis{display:flex;justify-content:space-between;font-size:19px;color:var(--muted);margin-top:-8px}.sample{font-size:22px;line-height:1.45}.chart-note{font-size:20px;line-height:1.45;color:var(--muted);padding-top:12px;margin-top:12px;border-top:1px solid var(--line)}
 .impacts{display:grid;grid-template-columns:1fr 1.12fr 1.25fr;gap:24px}.impacts .card{padding:22px 26px;display:flex;flex-direction:column;gap:12px}.impacts h3{display:flex;align-items:center;gap:12px;font-size:28px}.impacts p{font-size:24px;line-height:1.5}.impacts small{font-size:19px;color:var(--muted);line-height:1.4}.impacts .good{border-top:5px solid var(--good)}.impacts .bad{border-top:5px solid var(--bad)}
 .concl{font-size:58px;max-width:1720px}.refs{gap:26px;align-items:start}.refs .card{padding:26px}.refs h3{font-size:28px}.refs ol{gap:22px}.refs li{font-size:22px;line-height:1.5}
+
+/* 작은 설명은 한 흐름으로 묶고, 비교·단계·그래프에만 큰 구획을 남김 */
+.card{box-shadow:none}
+.g2 .duo .card,.g2>.col>.card:not(.reason){border:0;border-radius:0;background:none;padding:0}
+.g2 .duo{gap:36px;align-items:center}
+.g2 .w3 div{background:none;border-radius:0;padding:12px 16px 12px 0}
+.g2 .w3 div+div{padding-left:20px;border-left:1px solid var(--line)}
+.g2 .reason{border:0;border-radius:16px;background:var(--acc-soft);padding:28px 32px}
+.scope{border:0;border-top:1px solid var(--line);border-radius:0;background:none;padding:12px 0;font-size:21px}
+.scope .sk{background:none;color:var(--muted);padding:0;font-size:18px}
+.t1>.col{justify-content:flex-start;gap:28px}
+.t1 .press,.t1 .said{border:0!important;border-radius:0;background:none!important;padding:0;box-shadow:none}
+.t1 .press:first-child{padding-bottom:24px;border-bottom:1px solid var(--line)!important}
+.t1 .press:first-child .v{font-size:40px;line-height:1.3}
+.t1 .press.pick .v{font-size:32px}
+.t1 .press.pick::before{display:none}
+.t1 .said{gap:8px}.t1 .said .tag{border:0;padding:0;background:none;color:var(--muted)}
+.t1 .said .d{font-size:23px}
+.timeline{border-top:2px solid var(--line);padding-top:24px;gap:24px}
+.timeline>div{border:0;border-radius:0;background:none;padding:0;gap:8px}
+.timeline>div+div{padding-left:24px;border-left:1px solid var(--line)}
+.timeline time{font-size:20px;color:var(--muted)}.timeline b{font-size:28px}.timeline span{font-size:22px}
+.mrow{border-top:1px solid var(--line);padding-top:20px}
+.mrow .card{border:0;border-radius:0;background:none;padding:16px 18px;box-shadow:none}
+.mrow .mech.pick{border:0!important;background:none!important}
+.mrow .mech.pick::before{display:none}.mrow .mech.pick h3{color:var(--accent-ink)}
+.mrow .mech.pick .d{color:var(--ink)}.mrow:has(.pick) .mech:not(.pick){opacity:1}
+.mrow .evi{border-left:1px solid var(--line);padding-left:24px}
+.stock>.col>.sub{font-size:30px;color:var(--ink)}
+.tiles{display:flex;flex-direction:column;gap:0}
+.tile{display:grid;grid-template-columns:150px 1fr;grid-template-rows:auto auto;gap:4px 20px;align-content:center;flex:1;padding:16px 0;border:0;border-radius:0;background:none}
+.tile+.tile{border-top:1px solid var(--line)}
+.tile h3{grid-row:1/3;align-self:center;font-size:23px;color:var(--muted)}.tile h3 .ic{color:var(--muted)}
+.move{border:0;border-left:1px solid var(--line);border-radius:0;background:none;padding:0 0 0 32px;justify-content:flex-start}
+.move h3{font-size:30px}.apps span{background:none;border:0;padding:12px;font-size:27px}
+.apps .now{background:none;border:0}.lose{gap:32px}
+.lose>div{padding:16px 0;background:none;border-radius:0}
+.lose>div+div{padding-left:24px;border-left:1px solid var(--line)}
+.cpts{border-top:1px solid var(--line);padding-top:24px;gap:28px}
+.cpt{background:none;border:0;border-radius:0;padding:0;justify-content:flex-start;gap:10px}
+.cpt h3{font-size:25px}.cpt .d{font-size:22px}.cpt .tag{font-size:16px}
+.situ{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:8px 0 16px}
+.situ .k{font-size:20px;color:var(--muted)}.situ .v{font-size:25px}
+.steps li.card{background:none;border:0;border-radius:0;box-shadow:none;padding:20px 0}
+.steps li+li{border-top:1px solid var(--line)}
+.chg{border-top:1px solid var(--line);border-radius:0;background:none;color:var(--ink);padding:14px 0}
+.chg .k{font-size:19px;color:var(--muted)}.chg span{font-size:21px}.chg i{font-size:24px;color:var(--muted)}
+.impacts{border-top:1px solid var(--line);padding-top:20px;gap:32px}
+.impacts .card{border:0;border-radius:0;box-shadow:none;background:none;padding:0;gap:12px}
+.impacts h3{font-size:25px}.impacts p{font-size:23px}.impacts small{font-size:18px}
+.stat-card{border-radius:16px}
+.refs .card{border:0;border-radius:0;background:none;padding:26px 0}
+
+
+/* 한 장에 하나의 메시지: 기존 색상·16:9 무대·조작은 유지 */
+section.focused{padding:62px 100px 118px;gap:30px;--line:#bac2cd}
+section.focused.has-phone{padding-top:48px;padding-bottom:90px;gap:22px}
+.focused.has-phone h2{font-size:54px}
+.focused-header{flex:none;max-width:1670px}
+.focused-section{font-size:23px;color:var(--accent-ink);font-weight:700;margin-bottom:12px}
+.focused h2{font-size:58px;line-height:1.24;letter-spacing:-.025em;text-wrap:balance}
+.focused-body{flex:1;min-height:0}
+.focused-headline{font-size:64px;line-height:1.35;font-weight:900;letter-spacing:-.025em;max-width:1450px;text-wrap:balance}
+.focused-lines{display:flex;flex-direction:column;gap:22px;margin-top:34px;max-width:1450px}
+.focused-lines p{font-size:34px;line-height:1.55;color:var(--muted);text-wrap:pretty}
+.focused-points{display:flex;flex-direction:column;margin-top:36px;max-width:1540px}
+.focused-points li{display:grid;grid-template-columns:160px 1fr;gap:22px;align-items:center;min-height:98px;padding:18px 0}
+.focused-points li+li{border-top:1px solid var(--line)}
+.focused-point-number{font-size:34px;font-weight:900;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.focused-points h3{font-size:32px;font-weight:800;line-height:1.4;color:var(--ink)}
+.focused-points p{font-size:32px;line-height:1.5;color:var(--muted);text-wrap:pretty}
+.focused-notes{display:flex;flex-direction:column;gap:10px;list-style:disc;padding-left:30px;max-width:1580px}
+.focused-notes li{font-size:27px;line-height:1.5;color:var(--muted);padding-left:6px}
+.focused-text{display:flex;flex-direction:column;justify-content:center;padding:22px 0 34px}
+.focused-visual,.focused-cover{display:grid;grid-template-columns:470px 1fr;gap:80px;align-items:center}
+
+.session-phone{width:370px!important;aspect-ratio:266/548!important;background:#fff;box-shadow:0 18px 45px #17202b16}
+.session-top{position:absolute;top:0;left:0;right:0;background:#fff;padding:22px 20px;display:flex;justify-content:space-between;align-items:center;font-size:23px}
+.session-top b{font-size:21px}
+.session-status{position:absolute;top:80px;left:24px;right:24px;display:flex;justify-content:center;align-items:center;gap:9px;background:#fff;padding:12px;border-radius:30px;box-shadow:0 3px 12px #17202b12;font-size:17px;font-weight:700}
+.session-status i{width:8px;height:8px;background:#3b8c6e;border-radius:50%}
+.session-sheet{position:absolute;bottom:0;left:0;right:0;background:#fff;border-radius:26px 26px 0 0;padding:12px 22px 20px;box-shadow:0 -8px 24px #17202b16}
+.session-handle{width:36px;height:4px;border-radius:4px;background:#d9dde2;margin:0 auto 20px}
+.session-eyebrow{font-size:14px;color:#6e747c;margin-bottom:10px}
+.session-sheet h3{font-size:24px;line-height:1.35;letter-spacing:-.04em;margin:0 0 14px;word-break:keep-all}
+.session-description{font-size:17px;line-height:1.55;color:#626970;margin-bottom:22px}
+.session-option{display:flex;align-items:center;gap:12px;padding:17px 12px;border:1.5px solid #d9c735;border-radius:14px;background:#fffdee;margin-bottom:20px;text-align:left}
+.session-radio{width:18px;height:18px;border:5px solid #222a32;border-radius:50%;flex:none}
+.session-option b{font-size:17px;display:block}.session-option small{font-size:12px;color:#626970;display:block;margin-top:6px;white-space:nowrap}
+.session-recommended{font-size:11px;background:#fee500;padding:4px 6px;border-radius:5px;margin-left:auto}
+.session-button{background:#fee500;border-radius:12px;padding:16px 8px;text-align:center;font-size:18px;font-weight:800;color:#191c20}
+.session-footnote{text-align:center;font-size:12px;color:#777f87;margin-top:13px}
+.session-active-note{background:#f2f6f4;color:#315c49;font-size:16px;padding:18px 12px;border-radius:12px;margin-bottom:22px;display:flex;gap:9px;align-items:center}
+
+.closing-message{display:flex;flex-direction:column;justify-content:center;gap:38px}
+.closing-hero{font-size:84px;line-height:1.35;font-weight:900;letter-spacing:-.035em}
+.closing-hero span{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:10px;text-underline-offset:14px}
+.closing-summary .focused-lines{margin-top:0;gap:14px}
+.closing-summary .focused-lines p{font-size:30px}
+.closing-validation{border-top:1px solid var(--line);padding-top:24px;font-size:25px;color:var(--muted)}
+.focused-copy{min-width:0}
+.existing-controls{font-size:26px;line-height:1.5;color:var(--muted);margin-top:30px}
+.focused-selection-reason{margin-top:38px;padding-top:28px;border-top:2px solid var(--accent);font-size:34px;line-height:1.5;font-weight:700;color:var(--ink)}
+.focused-visual .focused-headline{font-size:59px}
+.focused-mechanism{display:grid;grid-template-columns:520px 1fr;align-items:center;gap:60px}
+.mechanism-copy>h3{font-size:56px;line-height:1.3;margin-bottom:38px}
+.mechanism-copy dl>div{padding:22px 0}
+.mechanism-copy dl>div+div{border-top:1px solid var(--line)}
+.mechanism-copy dt{font-size:32px;font-weight:800;margin-bottom:10px}
+.mechanism-copy dd{font-size:29px;line-height:1.5;color:var(--muted);margin:0}
+.mechanism-pair{display:flex;justify-content:center;gap:38px}
+.mechanism-pair>div{text-align:center}
+.mechanism-pair .focused-phone{width:auto;height:650px;border-radius:22px}
+.mechanism-pair figcaption{display:none}
+.mechanism-pair h3{font-size:30px;margin-top:18px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:5px;text-underline-offset:10px}
+.mechanism-pair .focused-phone::after{content:"";position:absolute;left:9px;top:28%;height:24%;border-left:4px solid var(--accent);pointer-events:none}
+.mechanism-pair>div:nth-child(2) .focused-phone::after{top:49%;height:21%}
+.mechanism-summary{text-align:center;font-size:40px;font-weight:800;padding-top:4px}
+.focused-visual .focused-lines{max-width:1080px}
+.focused figure{display:flex;flex-direction:column;align-items:center;gap:12px;margin:0;min-width:0}
+.focused-phone{position:relative;width:380px;aspect-ratio:9/19.5;border:1px solid var(--line);border-radius:26px;background:#fff;overflow:hidden;flex:none}
+.focused-phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.focused-visual:has(img[src*="proposal-"]) .focused-phone{width:360px}
+.focused figcaption{font-size:18px;line-height:1.45;color:var(--muted);text-align:center;max-width:460px}
+.focused-source{position:absolute;left:100px;right:275px;bottom:30px;font-size:18px;line-height:1.45;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.focused-source a:hover{color:var(--accent-ink)}
+.focused-source a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.focused-cover{grid-template-columns:850px 1fr;gap:30px;position:relative;isolation:isolate}
+.focused-cover>div{text-align:center;width:max-content;justify-self:center}
+.focused-cover .focused-who{margin-top:110px;text-align:right;padding-right:0}
+.focused-cover-subtitle{font-size:43px;line-height:1.4;margin-top:30px;color:var(--muted);white-space:nowrap}
+.focused-cover figure{transform:translateY(-16px)}
+.focused-cover figcaption{display:none}
+.focused-cover .focused-phone{width:410px;box-shadow:0 20px 55px #31290024}
+.focused.slide-cover{justify-content:flex-start}
+.focused-cover .focused-headline{font-size:88px;max-width:none;line-height:1.24;color:var(--accent-ink);white-space:nowrap}
+.focused-cover .focused-lines p{font-size:37px}
+.focused-who{font-size:28px;font-weight:700;margin-top:45px}.focused-who span{font-size:25px;color:var(--muted);margin-left:22px}
+.focused-flow{display:flex;gap:45px;margin-top:60px;max-width:1700px}
+.focused-flow li{flex:1;position:relative;border-top:2px solid var(--line);padding-top:28px}
+.focused-flow span{display:block;color:var(--accent-ink);font-size:28px;font-weight:900;margin-bottom:18px}
+.focused-flow p{font-size:35px;line-height:1.5}
+.focused-duration{max-width:1250px;margin-top:65px;padding-left:16px}
+.focused-duration>div{height:24px;position:relative;background:var(--line);border-radius:12px}
+.focused-duration span{position:absolute;left:16.6667%;right:0;top:0;bottom:0;background:var(--acc-line);border-radius:12px}
+.focused-duration i{position:absolute;left:16.6667%;top:-10px;height:44px;border-left:6px solid var(--accent)}
+.focused-duration>p{display:flex;justify-content:space-between;padding-left:16.6667%;margin-top:24px;font-size:28px}.focused-duration b:first-child{color:var(--accent-ink)}
+.surveys-combined{display:flex;flex-direction:column;justify-content:center;gap:38px}
+.surveys-panels{display:grid;grid-template-columns:1fr 1fr;gap:65px}
+.survey-panel+ .survey-panel{border-left:1px solid var(--line);padding-left:55px}
+.survey-panel-org{font-size:24px;color:var(--muted);margin-bottom:24px}
+.survey-panel h3{font-size:38px;line-height:1.4;min-height:115px;margin-bottom:28px}
+.survey-panel .focused-chart{margin:0;min-height:250px;gap:38px}
+.survey-panel .focused-bar-row>p{font-size:25px;padding-right:110px}
+.survey-panel .focused-bar-track b{font-size:33px;top:-53px}
+.survey-panel-meta{font-size:23px;line-height:1.55;color:var(--muted);margin-top:28px}
+.survey-combined-note{font-size:23px;color:var(--muted);border-top:1px solid var(--line);padding-top:24px}
+.survey-stack{display:flex;flex-direction:column;justify-content:center;gap:42px}
+.survey-stack .survey-question{font-size:46px;margin:0 0 12px;line-height:1.35}
+.survey-stack .survey-question-label{font-size:22px;margin-bottom:14px}
+.survey-stack .focused-data-question{font-size:27px}
+.survey-stack .focused-chart{max-width:none;margin-right:0}
+.survey-metadata{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-direction:column;gap:12px}
+.survey-metadata p{font-size:25px;line-height:1.45;color:var(--muted)}
+.survey-layout{display:grid;grid-template-columns:440px 1fr;gap:65px;align-items:center}
+.survey-scope{border-right:2px solid var(--line);padding-right:35px}
+.survey-question-label{font-size:24px;color:var(--muted);margin-bottom:20px}
+.survey-question{font-size:35px;font-weight:800;line-height:1.5;margin:0 0 35px}
+.survey-org{font-size:23px;font-weight:700;margin-bottom:15px}
+.survey-scope img{width:100%;height:220px;object-fit:contain;object-position:left center;margin-bottom:0}
+.survey-illustration-credit{font-size:17px!important;color:var(--muted);margin-bottom:25px}
+.survey-caveat{font-size:23px;line-height:1.5;color:var(--muted);margin-top:10px}
+.survey-scope h3{font-size:32px;line-height:1.4;margin-bottom:12px}
+.survey-scope>p{font-size:26px;line-height:1.5}
+.survey-distinction{margin-top:30px;color:var(--muted)}
+.survey-layout .focused-notes li{font-size:25px}
+.survey-layout .focused-method{font-size:21px}
+.focused-data{display:flex;flex-direction:column;justify-content:center;gap:24px;padding:14px 0}
+.focused-data-question{font-size:31px;color:var(--muted)}
+.focused-chart{max-width:1530px;margin:15px 55px 4px 0;display:flex;flex-direction:column;gap:40px}
+.focused-bar-row>p{font-size:29px;font-weight:600;margin-bottom:20px;padding-right:130px}
+.focused-bar-track{height:26px;position:relative;background:repeating-linear-gradient(to right,#eef0f3 0,#eef0f3 calc(25% - 1px),#d3d8df calc(25% - 1px),#d3d8df 25%)}
+.focused-bar-track span{display:block;height:100%;background:#827127}
+.focused-bar-track span.warning{background:#827127}
+.focused-bar-track b{position:absolute;right:0;top:-57px;font-size:38px;font-weight:700;line-height:1.2;white-space:nowrap;font-variant-numeric:tabular-nums}
+.focused-axis{display:flex;justify-content:space-between;font-size:20px;color:var(--muted);margin-top:-18px}
+.focused-data .focused-lines{margin-top:8px;gap:8px;max-width:1580px}
+.focused-data .focused-lines p{font-size:27px;line-height:1.5}
+.focused-method{font-size:23px;color:var(--muted);line-height:1.55;max-width:1580px;border-top:1px solid var(--line);padding-top:18px}
+.focused-references{padding:12px 0;display:flex;flex-direction:column;justify-content:center}
+.focused-ref-intro{font-size:31px;color:var(--muted);margin-bottom:28px}
+.focused-references ul{display:flex;flex-direction:column;gap:17px;max-width:1640px}
+.focused-references li b{font-size:26px;font-weight:700}.focused-references li p{font-size:24px;line-height:1.5;color:var(--muted);margin-top:7px}
+.focused-references .focused-lines{gap:8px;margin-top:30px}.focused-references .focused-lines p{font-size:24px}
+.focused.slide-conclusion .focused-headline{font-size:68px;color:var(--accent-ink)}
+.focused-factor{display:flex;flex-direction:column;justify-content:center}
+.focused-factor table{width:100%;border-collapse:collapse;text-align:left}
+.focused-factor th,.focused-factor td{padding:23px 20px;border-bottom:1px solid var(--line);font-size:28px;line-height:1.4}
+.focused-factor thead th{font-size:22px;color:var(--muted);padding-top:0;padding-bottom:18px}
+.focused-factor tbody th{width:310px}.focused-factor td:nth-child(2){width:300px;font-weight:700;color:var(--accent-ink)}
+.focused-factor .focused-lines{margin-top:24px;gap:10px}.focused-factor .focused-lines p{font-size:25px}
+.focused-factor .factor-core{background:var(--acc-soft)}
+.focused-factor .factor-core th{color:var(--accent-ink)}
+.focused-factor .factor-weak th,.focused-factor .factor-weak td{color:var(--muted)}
+.focused-factor .factor-role{display:block;font-size:28px;font-weight:500;color:var(--ink)}
+.focused-factor .factor-weak .factor-role{color:var(--muted)}
+.focused-factor .factor-core .factor-role{color:var(--accent-ink);font-weight:800}
+.focused-factor td,.focused-factor th{padding-top:18px;padding-bottom:18px}
+.focused-policy{display:flex;flex-direction:column;justify-content:center}
+.focused-policy-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:64px}
+.focused-policy-flow>li{min-width:0}.focused-policy .focused-phone{width:280px;border-radius:20px}
+.focused-policy .focused-ref-intro{margin-bottom:16px}
+.focused-policy figcaption{display:none}.focused-policy h3{font-size:30px;color:var(--ink);margin:16px 0 8px;display:flex;gap:16px;align-items:center}
+.focused-policy h3 span{color:var(--accent-ink);font-weight:900}
+.focused-policy-flow>li>p{font-size:27px;line-height:1.5;color:var(--muted)}
+:root{--accent-ink:#675900;--acc-soft:color-mix(in srgb,var(--accent) 24%,#fff)}
+.focused-cover .focused-headline{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:.12em;text-underline-offset:.15em}
+.focused-bar-track span{border:0}
+#foot{right:100px;bottom:30px;font-size:21px}
+::selection{background:var(--acc-line);color:var(--ink)}
 
 </style>
 </head>
@@ -328,112 +548,38 @@ section{padding:60px 88px 92px;gap:22px}
 <div id="stage">
   <div id="prog" aria-hidden="true"></div>
 
-<section class="cover" data-time="10">
-<div class="cv"><div>
-<p class="eyebrow" data-k="course">소셜미디어 · 플랫폼의 소셜화</p>
-<h1>「<span data-k="app">카카오맵</span>의<br><span class="hl" data-k="feature">친구위치</span> 분석」</h1>
-<p class="cq"><span class="k">분석 질문</span>연결은 유지하면서 위치 공개는 내가 선택할 수 있을까?</p>
-<p class="who"><span data-k="name">배진혁</span><i></i><span data-k="sid">20231675</span></p>
-</div><figure class="shot phone" style="--w:340px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></figure></div>
-<p class="src">화면: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> 공식 예시 · 분석 기준: 2026.10.16</p>
-</section>
+<section class="focused slide-cover has-phone" data-topic="s01" data-evidence="본발표 13장에 총 480초를 배분한 구성안이며 실제 리허설 시간은 아니다. 질의응답 2분과 참고자료 3장은 별도다. 화면은 2025.11.12 공식 예시이며 개인 앱 직접 캡처가 아니다." data-time="10"><div class="focused-body focused-cover"><div><p class="focused-headline">카카오맵 친구위치</p><p class="focused-cover-subtitle">지도에 더해진 소셜 기능 분석</p><p class="focused-who">배진혁 <span>20231675</span></p></div><figure><div class="focused-phone" style="aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 공개 예시 화면" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;max-width:none;object-fit:fill"></div><figcaption>카카오맵 공식 공개 예시</figcaption></figure></div><footer class="focused-source"><p><a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 · 개편 안내 2025.11.12</a></p></footer></section>
 
-<section class="" data-time="50"><header class="hd"><div><p class="eyebrow"><span class="no">02</span>분석 대상과 선정 이유</p><h2>친구위치의 편리함과 공개 통제</h2></div></header>
-<div class="body g2"><div class="shot phone" style="--w:350px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></div><div class="col">
-<div class="duo"><div class="card"><p class="k">카카오맵의 기본 목적</p><p class="v">장소 검색과 이동 경로 확인</p></div><div class="card"><p class="k">분석할 소셜 기능</p><p class="v">친구 위치 확인과 지도 위 대화</p></div></div>
-<div class="card"><p class="k">나의 사용 경험</p><dl class="w3"><div><dt>위치 확인</dt><dd>친구와 연락·모임 조율</dd></div><div><dt>대화 방식</dt><dd>지도 채팅과 별도 연락 모두 사용</dd></div><div><dt>느낀 불편</dt><dd>24시간 공유가 때때로 불편</dd></div></dl></div>
-<div class="card reason"><p class="k">내가 이 기능을 선택한 이유</p><p class="v">공유하고 싶은 때와 원하지 않는 때가 모두 있습니다</p><p class="d">상시 공유에서 느낀 불편을 바탕으로, 중단 표시가 해명 부담으로 이어질 가능성을 검토합니다. 친구 연결을 유지하면서 공개 시점과 중단 상태의 노출을 조절하는 방식에 주목합니다.</p></div>
-<p class="scope"><span class="sk">분석 범위</span><span><b>포함</b>위치·대화·공개 통제</span><span><b>제외</b>러닝·맛집 목록</span></p>
-</div></div><p class="src">경험: 발표자 진술 · 화면: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 공식 개편 안내, 2025.11.12</a> · 개인 앱 직접 캡처 아님</p></section>
+<section class="focused slide-visual has-phone" data-topic="s02" data-evidence="주변 지인 확인, 데이트 장소로 이동할 때, 친한 친구들과 모일 때의 이용은 발표자가 말한 사용 상황을 간략히 정리한 것이다. 구체적인 장소와 관계는 표기하지 않는다. 화면은 공식 공개 예시다." data-time="35"><header class="focused-header"><p class="focused-section">선정 이유와 기능 소개</p><h2>길 찾던 지도가 만남을 돕는 점에 주목했어요</h2></header><div class="focused-body focused-visual"><figure><div class="focused-phone" style="aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 공개 예시 화면" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;max-width:none;object-fit:fill"></div><figcaption>카카오맵 공식 공개 예시</figcaption></figure><div class="focused-copy"><p class="focused-headline">친구의 위치·이동·머문 시간을 함께 봐요</p><ol class="focused-points"><li><h3>주변 지인</h3><p>근처에 지인이 있다는 걸 알고 만나러 간 적이 있어요</p></li><li><h3>약속과 모임</h3><p>데이트 약속이나 친구 모임에서 서로 어디쯤인지 확인했어요</p></li></ol><p class="focused-selection-reason">길 찾기를 넘어, 떨어져 있어도 친구와 함께하는 느낌</p></div></div><footer class="focused-source"><p><a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 · 개편 안내 2025.11.12</a> · 발표자 사용 경험</p></footer></section>
 
-<section class="" data-time="45"><header class="hd"><div><p class="eyebrow"><span class="no">03</span><span class="tier">Tier 1</span>이 기능이 등장한 배경</p><h2>친구위치의 도입과 기능 확장</h2></div></header>
-<div class="body t1"><div class="cmp"><figure><div class="shot phone" style="--w:250px;aspect-ratio:246/497"><img src="images/435-main.png" alt="카카오맵 공식 일반지도 예시" style="inset:auto;left:-142.682927%;top:-36.418511%;width:528.455285%;height:160.965795%;object-fit:fill;max-width:none"></div><figcaption>장소 검색과 길찾기</figcaption></figure><span class="arr" aria-hidden="true">→</span><figure><div class="shot phone" style="--w:250px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></div><figcaption>친구 확인과 만남 조율</figcaption></figure></div>
-<div class="col"><div class="card press"><p class="k">공식 도입 목적</p><p class="v">현재 위치를 설명하는 수고를 줄임</p><p class="d">귀가·약속·이동 상황에서 서로의 위치를 확인하도록 지원합니다.</p></div><div class="card press pick"><p class="k">Tier 1 관점의 해석</p><p class="v">기본 지도 기능 외에 다시 이용할 이유</p><p class="d">기존 친구 관계를 장소 탐색과 연결하는 차별화입니다. 재방문·체류시간 증가량은 확인하지 못했습니다.</p></div><div class="card said mine"><span class="tag mine">성과 자료의 범위</span><p class="d">친구위치 단독 사용률·유지율을 공개 근거로 확인하지 못했습니다. 앱 전체 이용자 수로 대체하지 않습니다.</p></div></div>
-<div class="timeline" aria-label="기능 공개 연혁"><div><time>2019.11.04</time><b>위치공유 도입</b><span>친구와 위치 확인</span></div><div><time>2025.11.12</time><b>친구위치 개편</b><span>그룹별 숨기기·예약</span></div><div><time>2026.04.21</time><b>시간그룹</b><span>기본 1시간·최대 6시간</span></div><div><time>2026.07.24</time><b>링크 초대 그룹</b><span>최대 30명 참여 상한</span></div></div>
-</div><p class="src">공식 공개 연혁: <a href="https://kakaomap.tistory.com/281" target="_blank" rel="noopener">도입 안내, 2019.11.04</a> · <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 공식 개편 안내, 2025.11.12</a> · <a href="https://kakaomap.tistory.com/443" target="_blank" rel="noopener">시간그룹 안내, 2026.04.21</a> · <a href="https://kakaomap.tistory.com/455" target="_blank" rel="noopener">링크 초대 안내, 2026.07.24</a> · 연혁 간격은 기간에 비례하지 않음</p></section>
+<section class="focused slide-statement has-phone" data-topic="s03" data-evidence="2025.11.12 공식 개편 안내의 더 쉽고 재미있는 위치 확인, 지도 위 상태 표시, 채팅·이모티콘 기능을 바탕으로 정리했다. 친구가 함께 있는 느낌과 재방문 동기는 분석자의 해석이며 실제 효과를 측정한 결과나 기업 내부 의도로 단정하지 않는다. 2019년 전신 서비스의 위치 설명 수고 감소 목적과 구분한다. 전신인 톡친구 위치공유는 2019.11.04 공식 도입 안내가 공개됐다." data-time="45"><header class="focused-header"><p class="focused-section">Tier 1 · 도입 배경</p><h2>길 찾기 외에도 지도를 이용할 이유가 생겨요</h2></header><div class="focused-body focused-visual"><figure><div class="focused-phone" style="aspect-ratio:246/497"><img src="images/435-main.png" alt="카카오맵 공식 공개 예시 화면" style="inset:auto;left:-142.682927%;top:-36.418511%;width:528.455285%;height:160.965795%;max-width:none;object-fit:fill"></div><figcaption>카카오맵 공식 공개 예시</figcaption></figure><div class="focused-copy"><p class="focused-headline">위치 확인에 시각화와 소통의 재미를 더했어요</p><ol class="focused-points"><li><h3>서비스 발전</h3><p>2019년 ‘톡친구 위치공유’를 2025.11.12 ‘친구위치’로 개편했어요</p></li><li><h3>기능 지원</h3><p>위치·상태를 시각화하고 채팅·이모티콘으로 소통해요</p></li><li><h3>배경 해석</h3><p>친구와의 소통이 일상에서 지도를 다시 열 동기가 될 수 있어요</p></li></ol></div></div><footer class="focused-source"><p><a href="https://kakaomap.tistory.com/281" target="_blank" rel="noopener">카카오맵 · 도입 안내 2019.11.04</a> · <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 · 개편 안내 2025.11.12</a></p></footer></section>
 
-<section class="" data-time="85"><header class="hd"><div><p class="eyebrow"><span class="no">04</span><span class="tier">Tier 2</span>기능이 작동하는 방식</p><h2>위치를 보고 대화하며 만남을 조율합니다</h2></div></header>
-<div class="body t2"><ol class="flow">
-<li class="card step"><div class="shot phone" style="--w:186px;aspect-ratio:246/497"><img src="images/435-main.png" alt="카카오톡 공식 친구위치 초대 예시" style="inset:auto;left:-400.406504%;top:-36.418511%;width:528.455285%;height:160.965795%;object-fit:fill;max-width:none"></div><div class="txt"><i class="num">1</i><p class="k">보는 것</p><p class="v">친구위치 초대에 동의하고 그룹에 연결</p></div></li>
-<li class="card step"><div class="shot phone" style="--w:186px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></div><div class="txt"><i class="num">2</i><p class="k">내 반응</p><p class="v">지도에서 친구의 위치와 말풍선 확인</p></div></li>
-<li class="card step"><div class="shot phone" style="--w:186px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></div><div class="txt"><i class="num">3</i><p class="k">다음 행동</p><p class="v">지도 채팅이나 별도 연락으로 약속 조율</p></div></li>
-</ol><p class="sub">강의 메커니즘과 연결</p><div class="mrow">
-<div class="card mech"><h3><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>체류시간</h3><p class="d">친구 확인은 재방문 계기. 시간 증가량은 미확인.</p></div>
-<div class="card mech pick"><h3><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>실제 이용 전환</h3><p class="d">위치 정보와 대화가 연락·만남 판단으로 이어짐.</p></div>
-<div class="card mech"><h3><svg class="ic" aria-hidden="true"><use href="#i-loop"/></svg>데이터·추천 순환</h3><p class="d">공유 데이터의 추천 개선 효과는 확인하지 못함.</p></div>
-<div class="card evi"><p class="k">경험 근거</p><p class="d">위치만 확인한 경우와 지도 안에서 대화한 경우를 모두 사용했습니다.</p></div>
-</div></div><p class="src">화면·기능: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> 공식 예시 · 매출 전환이나 추천 성능 향상으로 해석하지 않음</p>
-</section>
+<section class="focused slide-mechanism has-phone" data-topic="s04" data-evidence="기능의 일반적인 이용 흐름과 사용자 진술에 근거한다. 특정 개인 만남 일화는 넣지 않는다. 체류시간 증가량·매출 전환·데이터에 따른 추천 개선 효과는 확인하지 못했다." data-time="40"><header class="focused-header"><p class="focused-section">Tier 2 · 이용 흐름</p><h2>위치를 보고 대화하며 만남을 조율해요</h2></header><div class="focused-body focused-mechanism"><div class="mechanism-copy"><h3>위치를 보고<br>대화로 이어져요</h3><dl><div><dt>위치 확인</dt><dd>친구가 어디쯤인지 알아요</dd></div><div><dt>지도 대화</dt><dd>같은 지도를 보며 연락해요</dd></div><div><dt>만남 조율</dt><dd>도착과 만날 곳을 맞춰요</dd></div></dl></div><div class="mechanism-pair"><div><figure><div class="focused-phone" style="aspect-ratio:294/576"><img src="images/435-status.png" alt="카카오맵 공식 공개 예시 화면" style="inset:auto;left:-171.088435%;top:-19.618056%;width:442.176871%;height:138.888889%;max-width:none;object-fit:fill"></div><figcaption>카카오맵 공식 공개 예시</figcaption></figure><h3>위치·이동·상태</h3></div><div><figure><div class="focused-phone" style="aspect-ratio:311/576"><img src="images/435-chat.png" alt="카카오맵 공식 공개 예시 화면" style="inset:auto;left:-278.456592%;top:-19.618056%;width:418.006431%;height:138.888889%;max-width:none;object-fit:fill"></div><figcaption>카카오맵 공식 공개 예시</figcaption></figure><h3>채팅·말풍선</h3></div></div></div><footer class="focused-source"><p><a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 · 개편 안내 2025.11.12</a></p></footer></section>
 
-<section class="" data-time="50"><header class="hd"><div><p class="eyebrow"><span class="no">05</span><span class="tier">Tier 3</span>이용이 쌓인 뒤의 결과</p><h2>공동 이용과 관계의 이동 비용</h2></div></header>
-<div class="body t3"><div class="stock"><figure class="shot phone" style="--w:214px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></figure><div class="col"><p class="sub">함께 이용하며 만들어지는 것</p><div class="tiles">
-<div class="card tile"><h3><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>공유 그룹</h3><p class="v">친구 관계</p><p class="d">위치를 함께 보는 연결</p></div>
-<div class="card tile"><h3><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>소통</h3><p class="v">지도 위 대화</p><p class="d">상황을 설명하고 반응</p></div>
-<div class="card tile"><h3><svg class="ic" aria-hidden="true"><use href="#i-history"/></svg>사용 관행</h3><p class="v">확인하는 습관</p><p class="d">공동 이용으로 생길 가능성</p></div>
-<div class="card tile"><h3><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>기록·평판</h3><p class="v">근거 부족</p><p class="d">축적량·이전 손실 미측정</p></div>
-</div></div></div>
-<div class="card move"><h3><svg class="ic" aria-hidden="true"><use href="#i-door"/></svg>다른 위치공유 앱으로 옮긴다면</h3><div class="apps"><span class="now">카카오맵</span><span class="arr" aria-hidden="true">→</span><span>대안 위치공유 앱</span></div><div class="lose"><div><p class="k">함께 쓰던 편의</p><ul><li>지도와 대화의 연결</li><li>그룹의 공동 이용 방식</li></ul></div><div><p class="k">다시 맞출 것</p><ul><li>상대의 설치·동의</li><li>새 공유 그룹과 설정</li></ul></div></div></div>
-<div class="cpts"><div class="card cpt"><div class="row"><h3><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>사회적 락인</h3><span class="tag maybe">가능성</span></div><p class="d">함께 쓰는 관계가 전환 비용이 될 수 있음.</p></div><div class="card cpt"><div class="row"><h3><svg class="ic" aria-hidden="true"><use href="#i-net"/></svg>네트워크 외부성</h3><span class="tag mine">구조 해석</span></div><p class="d">함께 위치를 공유하는 친구가 있어야 쓸모가 생김.</p></div><div class="card cpt"><div class="row"><h3><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg>슈퍼앱화</h3><span class="tag n">확인 부족</span></div><p class="d">지도·소통 결합만으로 슈퍼앱 성과를 단정하기 어려움.</p></div></div>
-</div><p class="src">공유 그룹·대화: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> · 락인과 전환 비용은 구조적 해석이며 유지율 실측이 아님</p>
-</section>
+<section class="focused slide-statement has-phone" data-topic="s05" data-evidence="2025.11.12 공식 안내의 카카오톡 친구·채팅방 초대, 초대 동의, 기존 프로필·닉네임 연계를 근거로 기존 관계망 활용의 편의를 설명한다. 카카오 서비스의 공동 이용과 지속 이용은 가능한 결과에 대한 해석이며 실제 유지율·교차 이용 증가를 측정한 결과는 아니다. 카카오맵 설치와 위치 공유 동의가 필요한 점을 생략하여 자동 공유처럼 해석하지 않는다." data-time="45"><header class="focused-header"><p class="focused-section">Tier 3 · 기존 관계망의 활용</p><h2>이미 연결된 카카오톡 친구들과 지도에서도 함께해요</h2></header><div class="focused-body focused-visual"><figure><div class="focused-phone" style="aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 공개 예시 화면" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;max-width:none;object-fit:fill"></div><figcaption>카카오맵 공식 공개 예시</figcaption></figure><div class="focused-copy"><p class="focused-headline">익숙한 카카오톡에서 친구위치로 이어져요</p><ol class="focused-points"><li><h3>기존 관계</h3><p>카카오톡 친구나 채팅방에 초대해 함께 시작해요</p></li><li><h3>이용 편의</h3><p>초대에 동의하면 익숙한 프로필로 지도에서 만나요</p></li><li><h3>기대 결과</h3><p>지도와 소통을 연결해 카카오 서비스를 함께 쓸 이유가 늘 수 있어요</p></li></ol></div></div><footer class="focused-source"><p><a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 · 개편 안내 2025.11.12</a></p></footer></section>
 
-<section class="" data-time="70"><header class="hd"><div><p class="eyebrow"><span class="no">06</span>Molinillo 5요인 종합 평가</p><h2>실용적 정보와 사회적 현존감이 중심입니다</h2></div></header>
-<div class="body factors"><table class="mol" data-ppt-table="molinillo"><thead><tr><th>요인</th><th>평가</th><th>사용 경험·기능 근거</th></tr></thead><tbody><tr><th><b>정보적 지지</b><small>다른 이용자의 정보·조언이 도움이 되는가</small></th><td class="r"><span class="rate m">보통</span></td><td>위치와 지도 대화가 모임 조율을 돕습니다. 조언·추천보다 실용 정보에 가깝습니다.</td></tr><tr><th><b>정서적 지지</b><small>공감·위로·격려를 얻는가</small></th><td class="r"><span class="rate n">근거 부족</span></td><td>채팅·반응 기능은 있지만, 위로·격려를 얻은 경험은 확인하지 못했습니다.</td></tr><tr><th><b>몰입 (Flow)</b><small>이용에 집중해 빠져드는가</small></th><td class="r"><span class="rate n">근거 부족</span></td><td>상시 공유 시간은 몰입의 증거가 아닙니다. 집중·시간 감각의 변화는 미측정입니다.</td></tr><tr><th><b>사회적 현존감</b><small>다른 사람의 존재와 연결을 느끼게 하는가</small></th><td class="r"><span class="rate s">강함</span></td><td>프로필·위치·말풍선이 친구의 존재를 지도 위에 표현합니다. 기능 구조 기준 평가입니다.</td></tr><tr><th><b>플랫폼 품질</b><small>편리함과 신뢰할 수 있는 통제를 제공하는가</small></th><td class="r"><span class="rate m">보통</span></td><td>위치 확인과 지도 대화는 편리합니다. 상시 공유는 불편했으며, 중단 표시의 해명 부담은 가능성으로 평가합니다.</td></tr></tbody></table><p class="legend">정성 평가 <span class="rate s">강함</span><span class="rate m">보통</span><span class="rate w">약함</span><span class="rate n">근거 부족</span> 이용자 전체의 통계 점수가 아닙니다</p></div>
-<p class="src">평가 틀: <a href="https://doi.org/10.4067/S0718-18762018000200107" target="_blank" rel="noopener">Molinillo 외, 2018</a> · 전자상거래 연구의 요인을 앱 분석에 적용(웹사이트 품질을 플랫폼 품질로 표현)</p>
-</section>
+<section class="focused slide-factors" data-topic="s06" data-evidence="Molinillo 외(2018)의 전자상거래 소셜커머스 의도 모형을 앱 분석에 적용했다. 5요인 이름을 유지하고 기능 구조와 사용 목적을 해석했다. 정서적 지지는 채팅이 안부와 소통의 통로가 될 가능성으로 설명하며, 실제 위로·격려 효과는 확인하지 않았다. 몰입 항목은 위치 확인·약속 조율이라는 목적 중심의 이용 흐름을 해석한 것이며, 심리적 몰입의 높고 낮음은 측정하지 않았다. 사회적 현존감은 프로필·위치·말풍선의 사람 표시 구조를 뜻하며 체감 효과를 검증한 결과가 아니다. 플랫폼 품질은 편의와 공개 선택 경험에 초점을 두며 위치 정확도·배터리 효율을 검증한 것은 아니다. 기능 구조와 공식 도입 목적을 기준으로 발표자가 상대적으로 평가했다. 정보적 지지와 사회적 현존감을 핵심 축으로, 정서적 지지와 몰입은 상대적으로 약한 축으로 해석한다. 이는 경험적으로 낮은 효과가 확인되었다는 뜻이 아니며, 기능 설계의 중심성을 비교한 의견이다. 플랫폼 품질은 편의와 공개 통제의 장단점이 공존하는 축이다." data-time="85"><header class="focused-header"><p class="focused-section">Molinillo 5요인 종합</p><h2>친구위치는 만남을 조율하는 실용형 소셜 기능이에요</h2></header><div class="focused-body focused-factor"><p class="focused-ref-intro">정보적 지지와 사회적 현존감이 중심이에요</p><table><thead><tr><th>평가 요인</th><th>기능의 역할</th><th>해석 근거</th></tr></thead><tbody><tr class="factor-core"><th scope="row" aria-label="정보적 지지: 중심">정보적 지지</th><td><span class="factor-role">만남 조율</span></td><td>공유한 위치를 보고 연락하거나 약속을 맞출 수 있어요</td></tr><tr class="factor-weak"><th scope="row" aria-label="정서적 지지: 상대적으로 약함">정서적 지지</th><td><span class="factor-role">안부·소통의 통로</span></td><td>안부를 나눌 수 있지만, 주된 역할은 위치 확인과 연락이에요</td></tr><tr class="factor-weak"><th scope="row" aria-label="몰입(Flow): 상대적으로 약함">몰입(Flow)</th><td><span class="factor-role">목적 중심 이용</span></td><td>위치를 확인하고 약속을 맞추는 목적 중심 흐름으로 봤어요</td></tr><tr class="factor-core"><th scope="row" aria-label="사회적 현존감: 중심">사회적 현존감</th><td><span class="factor-role">친구의 존재 표시</span></td><td>프로필·위치·말풍선으로 친구의 존재를 드러내요</td></tr><tr class="factor-mixed"><th scope="row" aria-label="플랫폼 품질: 장단점 공존">플랫폼 품질</th><td><span class="factor-role">편의와 공개 선택</span></td><td>위치 확인·대화는 편리하지만 상시 공유에는 부담도 있어요</td></tr></tbody></table><div class="focused-lines"><p>위치로 만남을 돕고 친구의 존재를 보여주는 데 초점을 둔 기능으로 봤어요.</p><p>강약은 기능 설계에 대한 상대평가예요. 실제 위로·몰입 효과는 측정하지 않았어요.</p></div></div><footer class="focused-source"><p><a href="https://doi.org/10.4067/S0718-18762018000200107" target="_blank" rel="noopener">Molinillo 외 · 2018</a> · <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 · 개편 안내 2025.11.12</a> · 발표자 사용 경험</p></footer></section>
 
-<section class="" data-time="50"><header class="hd"><div><p class="eyebrow"><span class="no">07</span>핵심 강점과 한계</p><h2>만남의 편리함과 공개 중단의 부담</h2></div></header>
-<div class="body t7"><div class="sw2">
-<div class="card sw good"><div class="top"><span class="tag g">강점</span><h3>관계와 장소를 한 화면에서 확인</h3></div><figure class="shot phone" style="--w:206px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></figure><dl><div><dt>기능과 경험</dt><dd>친구 위치를 확인하고 지도에서 대화하며 연락·모임을 조율할 수 있습니다.</dd></div><div><dt>관련 요인</dt><dd>정보적 지지와 사회적 현존감</dd></div></dl></div>
-<div class="card sw bad"><div class="top"><span class="tag b">한계</span><h3>중단 선택이 해명 부담으로 이어질 수 있음</h3></div><figure class="shot phone" style="--w:206px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 내 위치 숨기기 안내" style="inset:auto;left:-268.796992%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></figure><dl><div><dt>이미 있는 통제 수단</dt><dd>그룹별 숨기기·예약<div class="time-plot" data-ppt-diagram="time" role="img" aria-label="시간그룹: 기본 1시간, 최대 6시간"><p>시간제한 그룹의 설정 범위</p><div class="time-track"><span class="time-range"></span><i></i></div><div class="time-labels"><span>시작</span><b>기본 1시간</b><strong>최대 6시간</strong></div></div></dd></div><div><dt>사용 경험에서 제기한 문제</dt><dd>상대에게 꺼짐 표시가 나온다는 사용 경험이 있습니다. 그 이유를 질문받을 가능성이 문제입니다.</dd></div><div><dt>관련 요인</dt><dd>플랫폼 품질의 공개 통제 경험</dd></div></dl></div>
-</div><div class="why1"><p class="k">우선 보완할 점</p><p class="v">연결을 유지하면서, 공개 중단 이유를 드러내지 않을 선택권</p><span class="go">8장 개선안으로 →</span></div></div>
-<p class="src">본인 숨기기 화면: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> · 시간그룹: <a href="https://kakaomap.tistory.com/443" target="_blank" rel="noopener">카카오맵, 2026.04.21</a> · 상대의 꺼짐 표시는 사용자 진술(직접 캡처 미확보)</p>
-</section>
+<section class="focused slide-statement has-phone" data-topic="s08" data-evidence="상시 위치 공유가 가끔 불편하다는 발표자의 실제 경험을 한계점의 출발점으로 삼는다. 필요에 따른 공개 조절은 사용자 요구이며 기존 숨기기·시간 설정이 없다는 뜻이 아니다. 중단 표시의 부담은 세부적인 가능성으로 다루며 실제 질문이나 추궁 사건이 있었다고 주장하지 않는다. 꺼짐 표시의 노출은 발표자 진술이며 직접 캡처와 현재 표시 정책 전체의 검증은 확보하지 않았다." data-time="30"><header class="focused-header"><p class="focused-section">한계점 · 위치 공개의 부담</p><h2>함께 쓰고 싶지만, 계속 공유되는 건 부담스러울 때가 있어요</h2></header><div class="focused-body focused-visual"><figure><div class="focused-phone" style="aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 공개 예시 화면" style="inset:auto;left:-268.796992%;top:-22.992701%;width:488.721805%;height:145.985401%;max-width:none;object-fit:fill"></div><figcaption>카카오맵 공식 공개 예시</figcaption></figure><div class="focused-copy"><p class="focused-headline">필요한 순간에 공개를 조절하고 싶어요</p><ol class="focused-points"><li><h3>사용 경험</h3><p>함께 위치를 보는 건 편하지만, 계속 공유되는 건 가끔 불편했어요</p></li><li><h3>개선 요구</h3><p>친구 연결은 유지하면서 필요할 때 위치를 공개하고 싶어요</p></li><li><h3>관리 부담</h3><p>언제 공유를 멈출지 매번 신경 쓰고 싶지는 않아요</p></li></ol></div></div><footer class="focused-source"><p>발표자 사용 경험 · <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 · 개편 안내 2025.11.12</a></p></footer></section>
 
-<section class="" data-time="60"><header class="hd"><div><p class="eyebrow"><span class="no">08</span>개선안</p><h2>중단 이유를 드러내지 않는 공개 통제</h2></div></header>
-<div class="body t8"><p class="situ"><span class="k">해결할 한계</span><span class="v">공유 중단의 해명 부담</span><span class="k">적용 상황</span><span class="v">친구 연결은 유지하고 지금의 노출만 줄이고 싶을 때</span></p>
-<div class="prop"><div class="ba"><figure><div class="shot phone" style="--w:248px"><img src="images/proposal-active.png" alt="비공식 제안: 본인 화면에 위치 공유 중 표시"></div><figcaption>본인: 공유 중·중단 선택</figcaption></figure><span class="arr" aria-hidden="true">→</span><figure class="new"><div class="shot phone" style="--w:248px"><img src="images/proposal-history.png" alt="비공식 제안: 상대에게 마지막 공유 기록과 시각만 표시"></div><figcaption>상대: 마지막 기록 확인</figcaption></figure></div><div class="col"><ol class="steps">
-<li class="card"><i class="num">1</i><div><p class="k">공유를 시작할 때</p><p class="v">기본은 갱신 OFF. 친구위치에서 동의한 경우에만 이번 앱 사용 중 공유합니다.</p></div></li>
-<li class="card"><i class="num">2</i><div><p class="k">공유를 멈출 때</p><p class="v">직접 중단하거나 앱을 나가면 갱신을 멈춥니다. 다시 열어도 자동 재개하지 않습니다.</p></div></li>
-<li class="card"><i class="num">3</i><div><p class="k">상대에게 보이는 것</p><p class="v">마지막 공유 위치와 시각은 남기되, 꺼짐·종료 이유를 별도로 표시하지 않습니다.</p></div></li>
-</ol><p class="chg"><span class="k">추가 선택권</span><span>마지막 기록 유지</span><i aria-hidden="true">↔</i><span>완전 비공개·기록 삭제</span></p><p class="d">기존 시간·상시 공유 선택지도 유지합니다. 새 정책은 제안이며 미구현입니다.</p></div></div></div>
-<p class="src">화면: 내장 ImageGen 제안 목업 · 과거 위치를 현재로 단정하지 않음 · 동일 세션·복귀 재동의 조합의 현행 제공 여부는 미확인</p>
-</section>
+<section class="focused slide-surveys" data-topic="s09" data-evidence="Harris·NYT(2022), Q5. 미국 성인 전체 1,054명 중 일부 시간 위치 기능을 비활성화하는 하위집단이며 비가중 n=764·가중 N=773이다. 기기의 위치 기능 전반에 관한 가중 응답 비율이다. 그래프 가로축은 0~100%이며 각 막대는 독립된 응답 항목이다. 카카오맵 이용자 비율이나 개선안의 효과가 아니다.
+변경 전 본문: 기기 위치 기능을 일부 시간 비활성화하는 사람의 응답입니다. / 복수응답이므로 두 비율을 합산할 수 없습니다.
+그래프 값: 위치 추적을 원하지 않음 45%, 일부 시간에만 필요 41%. 두 항목은 독립 막대로 표시하며 복수응답으로 합산하지 않는다.
+eSafety 공식 보도자료(2024.11.25). 문항은 위치공유 앱으로 원할 때 친밀한 관계의 상대를 추적할 수 있기를 기대하는 것이 합리적인지에 관한 태도다. 가로축 0~100%, 동의·매우 동의 비율 13.6%로 표시한다. 나머지 86.4%를 모두 반대로 표시하지 않는다. Harris와 조사 대상·문항이 달라 직접 비교하거나 제안 효과로 일반화할 수 없다.
+변경 전 본문: 13.6%가 그 기대를 합리적이라고 동의·매우 동의했습니다. / 호주 성인 2,046명의 태도 조사입니다. / 실제 추적률이나 피해율이 아닙니다.
+그래프 값: 동의·매우 동의 13.6%. 가로축은 0~100%이며 나머지 비율을 모두 반대로 표시하지 않는다." data-time="60"><header class="focused-header"><p class="focused-section">공개 조사 · 위치 공개의 선택</p><h2>위치 공개를 조절할 필요성을 해외 조사에서도 살펴봤어요</h2></header><div class="focused-body surveys-combined"><div class="surveys-panels"><div class="survey-panel"><p class="survey-panel-org">Harris Poll · 미국 · 2022</p><h3>위치 기능을 가끔<br>끄는 이유는 무엇인가요?</h3><div class="focused-chart" role="img" aria-label="추적을 원하지 않음 45%; 일부 시간에만 필요 41%。0~100% 축"><div class="focused-bar-row"><p>추적을 원하지 않음</p><div class="focused-bar-track"><span style="width:45%;"></span><b>45%</b></div></div><div class="focused-bar-row"><p>일부 시간에만 필요</p><div class="focused-bar-track"><span style="width:41%;"></span><b>41%</b></div></div><div class="focused-axis"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div><p class="survey-panel-meta">기기 위치 기능 전반 · 해당 문항 764명<br>가중 비율 · 복수응답</p></div><div class="survey-panel"><p class="survey-panel-org">eSafety · 호주 · 2024</p><h3>연인의 위치를 원할 때<br>추적할 수 있어야 할까요?</h3><div class="focused-chart" role="img" aria-label="동의·매우 동의 13.6%。0~100% 축"><div class="focused-bar-row"><p>동의·매우 동의</p><div class="focused-bar-track"><span style="width:13.6%;" class="warning"></span><b>13.6%</b></div></div><div class="focused-axis"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div><p class="survey-panel-meta">성인 2,046명 · 위치추적 기대에 대한 태도<br>실제 추적률·피해율이 아님</p></div></div><p class="survey-combined-note">서로 다른 대상·문항의 조사예요. 수치 간 직접 비교나 카카오맵 이용자 비율로 해석할 수 없어요.</p></div><footer class="focused-source"><p><a href="https://theharrispoll.com/wp-content/uploads/2022/08/NYT_Location-Sharing_data.pdf" target="_blank" rel="noopener">Harris·NYT · 2022 Q5</a> · <a href="https://theharrispoll.com/articles/location-sharing-features/" target="_blank" rel="noopener">Harris · 조사 방법</a> · <a href="https://www.esafety.gov.au/newsroom/media-releases/track-harass-repeat-love-in-the-age-of-tech" target="_blank" rel="noopener">eSafety · 2024.11.25</a></p></footer></section>
 
-<section class="" data-time="45"><header class="hd"><div><p class="eyebrow"><span class="no">09</span>공개 수치와 개선안의 한계</p><h2>위치 공개를 끄려는 이유와 관계 속 기대</h2></div></header>
-<div class="body evidence"><div class="stats">
-<div class="card stat-card"><p class="k">미국 · Harris·NYT 2022</p><h3>기기의 위치 기능을 비활성화하는 이유</h3><p class="chart-unit">가중 응답 비율 (%)</p>
-<div class="percent-chart" data-ppt-chart="harris" data-values="45,41" data-labels="위치 추적을 원하지 않음|일부 시간에만 필요" role="img" aria-label="가중 응답 비율: 위치 추적을 원하지 않음 45%, 일부 시간에만 필요 41%. 축 0~100%">
-<div class="bar-row"><p>위치 추적을 원하지 않음</p><div class="bar-track"><span class="bar-fill" style="width:45%"></span><b style="left:45%">45%</b></div></div>
-<div class="bar-row"><p>일부 시간에만 필요</p><div class="bar-track"><span class="bar-fill second" style="width:41%"></span><b style="left:41%">41%</b></div></div>
-<div class="chart-axis"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div>
-<p class="sample">미국 전체 1,054명 중 일부 시간 비활성화 하위집단<br>비가중 n=764 · 가중 N=773 · 복수응답, 합산 불가</p><p class="chart-note">기기 위치 기능 전반의 조사이며 친구위치 사용자 비율이 아닙니다.</p></div>
-<div class="card stat-card"><p class="k">호주 · eSafety 2024</p><h3>원할 때 연인 위치를 추적할 수 있다는 기대에 동의</h3><p class="chart-unit">동의·매우 동의 비율 (%)</p>
-<div class="percent-chart single" data-ppt-chart="esafety" data-values="13.6" data-labels="동의·매우 동의" role="img" aria-label="동의·매우 동의 비율 13.6%. 축 0~100%">
-<div class="bar-row"><p>동의·매우 동의 응답</p><div class="bar-track"><span class="bar-fill warning" style="width:13.6%"></span><b style="left:13.6%">13.6%</b></div></div>
-<div class="chart-axis"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div>
-<p class="sample">호주 성인 n=2,046<br>위치 추적을 기대하는 태도에 관한 조사</p><p class="chart-note">피해율·실제 추적률이 아닙니다. 왼쪽 조사와 문항·대상이 다릅니다.</p></div>
-</div><div class="impacts"><div class="card good"><h3>기대 효과 <span class="tag maybe">미검증</span></h3><p>공개 시점을 내가 선택<br>중단 사유를 설명하는 부담 완화</p></div><div class="card bad"><h3>예상 한계</h3><p>갱신 중단을 시각으로 추측<br>오래된 위치를 현재로 오인<br>재동의로 만남 조율이 번거로워짐</p></div><div class="card"><h3>앞으로 확인할 지표</h3><p>해명 부담 점수 · 모의 질문 선택률<br>현재 위치 오인률</p><small>현재 미측정. 해외 수치로 제안 효과를 대신 입증할 수 없습니다.</small></div></div></div>
-<p class="src">출처: <a href="https://theharrispoll.com/wp-content/uploads/2022/08/NYT_Location-Sharing_data.pdf" target="_blank" rel="noopener">Harris·NYT, 2022, Q5</a> · <a href="https://www.esafety.gov.au/newsroom/media-releases/track-harass-repeat-love-in-the-age-of-tech" target="_blank" rel="noopener">eSafety, 2024.11.25</a> · 각 그래프는 독립된 조사이며 개선안의 효과 비교 실험은 실시하지 않음</p></section>
+<section class="focused slide-proposal has-phone" data-topic="s11" data-evidence="기존 숨기기·예약·시간 설정이 있다는 점을 전제로, 공개 중단을 관리하는 부담을 덜기 위한 이용 중 공유 방식의 제안이다. 중단 이유 비노출은 중심 논지에서 제외한다. 효과와 기존 기능 대비 정확한 차이는 추가 확인이 필요하다." data-time="60"><header class="focused-header"><p class="focused-section">개선 제안 · 필요한 이유</p><h2>연결은 유지하고, 위치는 이용할 때만 공유해요</h2></header><div class="focused-body focused-visual"><figure><div class="focused-phone session-phone"><img src="images/435-status.png" alt="공식 지도 예시를 바탕으로 구성한 제안 목업" style="inset:auto;left:-171.088435%;top:-19.618056%;width:442.176871%;height:138.888889%;max-width:none;object-fit:fill"><div class="session-top"><span>‹</span><b>친구위치</b><span>•••</span></div><div class="session-status"><i></i>내 위치는 아직 비공개</div><div class="session-sheet"><div class="session-handle"></div><p class="session-eyebrow">위치 공개 설정</p><h3>위치를 어떻게 공유할까요?</h3><p class="session-description">친구와 연결은 유지하고<br>필요한 순간에만 위치를 보여줘요</p><div class="session-option"><span class="session-radio"></span><div><b>이용 중에만 공유</b><small>친구위치를 나가면 자동 종료</small></div><span class="session-recommended">추천</span></div><div class="session-button">이용 중에만 공유하기</div><p class="session-footnote">기존 공유 방식은 설정에서 선택</p></div></div><figcaption>비공식 제안 목업 · 실제 서비스 화면 아님</figcaption></figure><div class="focused-copy"><p class="focused-headline">연결의 편리함과 공개 관리의 부담을 나눠 봐요</p><ol class="focused-points"><li><h3>연결의 가치</h3><p>친구와 위치를 보며 만남을 조율하는 건 편리해요</p></li><li><h3>남은 부담</h3><p>공유를 멈출 시점을 계속 챙겨야 할 수 있어요</p></li><li><h3>설계 목표</h3><p>연결은 유지하면서 공개를 관리하는 수고를 덜고 싶어요</p></li></ol><p class="existing-controls">기존에도 숨기기·시간 설정은 가능해요</p></div></div><footer class="focused-source"><p>비공식 제안 목업 · <a href="https://www.cs.cmu.edu/~CompThink/probes/papers/CHI2009.pdf" target="_blank" rel="noopener">Tsai 외 · CHI 2009</a> · 발표자 사용 경험 · <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 · 개편 안내 2025.11.12</a> · <a href="https://kakaomap.tistory.com/443" target="_blank" rel="noopener">카카오맵 · 시간그룹 2026.04.21</a></p></footer></section>
 
-<section class="end" data-time="15">
-<p class="eyebrow"><span class="no">10</span>결론</p>
-<p class="concl">친구위치는 지도 위에서 <em>만남과 소통</em>을 돕습니다.<br>위치 공개를 멈추는 선택에는 <em class="neg">해명 부담</em>이 생길 수 있습니다.<br>그래서 <em>갱신 시점과 중단 이유의 노출을 본인이 고르는 방식</em>을 제안합니다.</p>
-<p class="qa"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>질의응답</p>
-<p class="src">공개 수치는 개선의 필요성을 뒷받침하는 자료이며, 제안의 효과는 추가 검증 대상입니다.</p>
-</section>
+<section class="focused slide-statement has-phone" data-topic="s12" data-evidence="설계 의도를 설명하는 개념 제안이며 세부 동작을 확정하는 명세가 아니다. 첨부 이미지는 기존 비공식 목업이며 현재 앱 화면이 아니다. 이용 중 공유의 기존 제공 범위와 효과는 추가 확인이 필요하다." data-time="40"><header class="focused-header"><p class="focused-section">개선 제안 · 목업</p><h2>이용할 때 공유하고, 나가면 자동으로 멈춰요</h2></header><div class="focused-body focused-visual"><figure><div class="focused-phone session-phone"><img src="images/435-status.png" alt="공식 지도 예시를 바탕으로 구성한 제안 목업" style="inset:auto;left:-171.088435%;top:-19.618056%;width:442.176871%;height:138.888889%;max-width:none;object-fit:fill"><div class="session-top"><span>‹</span><b>친구위치</b><span>•••</span></div><div class="session-status"><i></i>이용 중에만 공유 중</div><div class="session-sheet"><div class="session-handle"></div><p class="session-eyebrow">위치 공개 설정</p><h3>이용 중에만 위치를 공유해요</h3><p class="session-description">친구위치 이용을 마치면<br>위치 공유도 자동으로 멈춰요</p><div class="session-active-note"><span>●</span> 이번 이용 동안만 공개</div><div class="session-button">공유 끝내기</div><p class="session-footnote">기존 공유 방식은 설정에서 선택</p></div></div><figcaption>비공식 제안 목업 · 실제 서비스 화면 아님</figcaption></figure><div class="focused-copy"><p class="focused-headline">필요한 이용 순간에 위치 공개를 맞춰요</p><ol class="focused-points"><li><h3>공유 선택</h3><p>‘이용 중에만 공유’를 선택해 시작해요</p></li><li><h3>자동 종료</h3><p>친구위치를 나가면 위치 갱신을 멈추는 방식이에요</p></li><li><h3>화면 안내</h3><p>지금 공유 중인지, 언제 끝나는지 분명히 알려줘요</p></li></ol></div></div><footer class="focused-source"><p>비공식 제안 목업 · <a href="https://kakaomap.tistory.com/443" target="_blank" rel="noopener">카카오맵 · 시간그룹 2026.04.21</a></p></footer></section>
 
-<section class="" data-time="0"><header class="hd"><div><p class="eyebrow"><span class="no">부록</span>참고자료</p><h2>참고자료와 근거의 범위</h2></div></header>
-<div class="body refs"><div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg>공식 기능·강의</h3><ol>
-<li><a href="https://kakaomap.tistory.com/281" target="_blank" rel="noopener">카카오맵, 2019.11.04</a><br>톡친구 위치공유 도입 목적</li><li><a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a><br>친구위치 개편·그룹별 숨기기·예약</li><li><a href="https://kakaomap.tistory.com/443" target="_blank" rel="noopener">카카오맵, 2026.04.21</a><br>기본 1시간·최대 6시간 시간그룹</li><li><a href="https://kakaomap.tistory.com/455" target="_blank" rel="noopener">링크 초대 안내, 2026.07.24</a><br>링크 초대 그룹 최대 30명</li><li>「플랫폼의 소셜화」 5주차 강의자료, 39~40쪽. 발표 8분과 Q&A 2분, 별도 한 장 요약본.</li>
-</ol></div><div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-quote"/></svg>분석·통계</h3><ol>
-<li><a href="https://doi.org/10.4067/S0718-18762018000200107" target="_blank" rel="noopener">Molinillo 외, 2018</a><br><i>A Social Commerce Intention Model for Traditional E-Commerce Sites.</i> 13(2), 80–93. 원래 전자상거래 연구의 평가 틀을 적용.</li>
-<li><a href="https://theharrispoll.com/wp-content/uploads/2022/08/NYT_Location-Sharing_data.pdf" target="_blank" rel="noopener">Harris·NYT, 2022, Q5</a> · <a href="https://theharrispoll.com/articles/location-sharing-features/" target="_blank" rel="noopener">Harris 조사 방법</a><br>2022.07.29~08.01, 미국 전체 n=1,054. Q5 비가중 n=764, 가중 N=773, 복수응답.</li>
-<li><a href="https://www.esafety.gov.au/newsroom/media-releases/track-harass-repeat-love-in-the-age-of-tech" target="_blank" rel="noopener">eSafety, 2024.11.25</a><br>호주 성인 n=2,046. 13.6%는 연인 추적 기대에 대한 태도.</li>
-</ol></div><div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-image"/></svg>화면·설계 선례</h3><ol>
-<li>1~4·5·7장: 카카오맵 공식 공개 예시의 해당 화면 영역. 개인 앱 직접 캡처로 표시하지 않음.</li><li>8장: 내장 ImageGen으로 제작한 비공식 제안 시안. 민지·서연·장소는 가상 설정.</li><li><a href="https://www.cs.cmu.edu/~CompThink/probes/papers/CHI2009.pdf" target="_blank" rel="noopener">Tsai 외, CHI 2009</a><br>n=56. 위치 제공 불가 사유를 구분하지 않는 설계 선례. 해당 표현의 효과를 분리 검증한 연구는 아님.</li><li>마지막 위치 유지·복귀 재동의는 제안. 최신 앱의 정확한 정책 조합은 직접 검증하지 않음.</li>
-</ol></div></div>
-</section>
+<section class="focused slide-conclusion" data-topic="s13" data-evidence="개선안은 이용 중 공유를 통해 공개 관리 부담을 덜려는 설계 제안이다. 실제 부담 감소나 이용 편의의 효과는 측정하지 않았다. 해외 조사는 배경 근거이며 개선 효과의 증거가 아니다." data-time="30"><header class="focused-header"><p class="focused-section">결론</p><h2>연결의 편리함에, 공개를 선택할 여유를 더해요</h2></header><div class="focused-body closing-message"><p class="closing-hero">친구와는 가깝게,<br><span>위치 공개는 필요한 만큼</span></p><div class="closing-summary"><div class="focused-lines"><p>친구위치는 위치 정보와 친구의 존재감을 통해 만남을 돕는 소셜 기능이에요.</p><p>이용 중 공유로, 연결의 편리함과 공개를 조절하는 편안함을 함께 제안해요.</p></div></div><p class="closing-validation">공개 관리 부담이 실제로 줄어드는지는 검증이 필요해요.</p></div><footer class="focused-source"><p>발표자 사용 경험 · 비공식 제안 목업 · <a href="https://theharrispoll.com/wp-content/uploads/2022/08/NYT_Location-Sharing_data.pdf" target="_blank" rel="noopener">Harris·NYT · 2022 Q5</a> · <a href="https://www.esafety.gov.au/newsroom/media-releases/track-harass-repeat-love-in-the-age-of-tech" target="_blank" rel="noopener">eSafety · 2024.11.25</a></p></footer></section>
+
+<section class="focused slide-references" data-topic="s14" data-evidence="공식 블로그: https://kakaomap.tistory.com/281 · https://kakaomap.tistory.com/435 · https://kakaomap.tistory.com/443 · https://kakaomap.tistory.com/455. 기능 규격과 실제 이용 효과를 구분한다." data-time="0"><header class="focused-header"><p class="focused-section">참고 1 · 공식 자료</p><h2>공식 기능 안내 및 업데이트</h2></header><div class="focused-body focused-references"><p class="focused-ref-intro">도입 목적 · 공개 통제 · 그룹 규격</p><ul><li><b><a href="https://kakaomap.tistory.com/281" target="_blank" rel="noopener">카카오맵 · 도입 안내 2019.11.04</a></b></li><li><b><a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵 · 개편 안내 2025.11.12</a></b></li><li><b><a href="https://kakaomap.tistory.com/443" target="_blank" rel="noopener">카카오맵 · 시간그룹 2026.04.21</a></b></li><li><b><a href="https://kakaomap.tistory.com/455" target="_blank" rel="noopener">카카오맵 · 링크 초대 2026.07.24</a></b></li></ul><div class="focused-lines"><p>2019.11.04: 위치공유 도입 목적</p><p>2025.11.12: 친구위치 개편·숨기기·예약</p><p>2026.04.21 / 07.24: 시간그룹·최대 30명 링크 그룹</p></div></div><footer class="focused-source"></footer></section>
+
+<section class="focused slide-references" data-topic="s15" data-evidence="Harris 조사 기간은 2022.07.29~08.01이고 전체 n=1,054, Q5 비가중 n=764·가중 N=773, 복수응답이다. eSafety는 호주 성인 n=2,046의 태도 조사로 13.6%는 동의·매우 동의 비율이며 피해율이 아니다. 원표·조사 방법·공식 보도자료를 각각 연결한다." data-time="0"><header class="focused-header"><p class="focused-section">참고 2 · 공개 조사</p><h2>공개 조사와 해석 범위</h2></header><div class="focused-body focused-references"><p class="focused-ref-intro">조사 대상·문항의 차이</p><ul><li><b><a href="https://theharrispoll.com/wp-content/uploads/2022/08/NYT_Location-Sharing_data.pdf" target="_blank" rel="noopener">Harris·NYT · 2022 Q5</a></b></li><li><b><a href="https://theharrispoll.com/articles/location-sharing-features/" target="_blank" rel="noopener">Harris · 조사 방법</a></b></li><li><b><a href="https://www.esafety.gov.au/newsroom/media-releases/track-harass-repeat-love-in-the-age-of-tech" target="_blank" rel="noopener">eSafety · 2024.11.25</a></b></li></ul><div class="focused-lines"><p>Harris·NYT(2022): 미국의 기기 위치 기능 비활성화 이유</p><p>eSafety(2024): 호주 성인의 연인 위치 추적 기대 태도</p><p>카카오맵 이용자 비율 및 제안 효과를 측정한 자료가 아님</p></div></div><footer class="focused-source"></footer></section>
+
+<section class="focused slide-references" data-topic="s16" data-evidence="Molinillo 외(2018), A Social Commerce Intention Model for Traditional E-Commerce Sites, 13(2), 80–93. 원논문의 종속변수는 소셜커머스 의도이며 앱 유지율·매출로 전이하지 않는다. Tsai 외(CHI 2009), n=56은 연구 규모이며 비노출 효과의 분리 검증 수치가 아니다. 사용자 근거는 일반 위치 확인·지도 대화 사용과 상시 공유 불편 및 꺼짐 표시의 존재로 제한하며 실제 추궁 사건을 단정하지 않는다. 앱 단독 사용률은 공개 근거로 미확인, 유지율은 미측정, 슈퍼앱 성과는 근거 부족이다. 목업 인물·장소는 가상이고 현재 정책 조합 전체의 구현 여부는 미확인이다. 강의 40쪽 요구는 발표 8분·질의응답 2분·별도 한 장 요약본이다." data-time="0"><header class="focused-header"><p class="focused-section">참고 3 · 연구와 설계</p><h2>평가 모형과 자료 구분</h2></header><div class="focused-body focused-references"><p class="focused-ref-intro">연구 · 사용자 진술 · 비공식 목업</p><ul><li><b><a href="https://doi.org/10.4067/S0718-18762018000200107" target="_blank" rel="noopener">Molinillo 외 · 2018</a></b></li><li><b><a href="https://www.cs.cmu.edu/~CompThink/probes/papers/CHI2009.pdf" target="_blank" rel="noopener">Tsai 외 · CHI 2009</a></b></li><li><b>발표자 사용 경험 · 상대 화면 직접 캡처 없음</b></li><li><b>비공식 제안 목업 · 가상 인물·장소 · 미구현</b></li></ul><div class="focused-lines"><p>Molinillo 외(2018): 전자상거래 모형을 앱 평가 틀로 적용</p><p>Tsai 외(CHI 2009): 제공 불가 사유를 구별하지 않는 설계 선례</p><p>공식 예시·비공식 목업과 개인 사용 기록의 구분</p></div></div><footer class="focused-source"></footer></section>
 
   <div id="foot"></div>
 </div>
@@ -487,7 +633,8 @@ function render() {
   const s = slides[cur], t = +s.dataset.time, ti = timed.indexOf(s);
   const until = timed.slice(0, ti + 1).reduce((a, x) => a + +x.dataset.time, 0);
   const tip = (t ? `권장 ${sec(t)} · 여기까지 ${clock(until)} / ${clock(total)}` : '부록 · 발표 시간 밖') + (blanks[cur] ? ` · 빈칸 ${blanks[cur]}` : '');
-  foot.innerHTML = `<span class="t">${tip}</span>${cur ? `${cur + 1} / ${slides.length}` : ''}`;
+  const pageLabel = t ? `${ti + 1} / ${timed.length}` : `부록 ${slides.filter(x => !+x.dataset.time).indexOf(s) + 1} / ${slides.length - timed.length}`;
+  foot.innerHTML = `<span class="t">${tip}</span>${pageLabel}`;
   help.textContent = `← → 넘기기 · F 전체 화면 · G 작성 안내 ${document.body.classList.contains('guide') ? '끄기' : '켜기'}` + (allBlanks ? ` · 남은 빈칸 ${allBlanks}개` : '');
 }
 
