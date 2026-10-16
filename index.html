@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>소셜 기능 분석 발표</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<script>
+/* ===== 앱을 정했으면 여기부터 고쳐 주세요 =====
+   app·feature·name·sid·course 값은 data-k가 붙은 모든 자리(표지·결론 등)에 한 번에 들어가요.
+   accent는 강조색이에요. 앱 대표색으로 바꿔 보세요.
+   guide가 true면 노란 작성 안내와 권장 시간이 보여요. false면 발표 모드로 열려요(G 키로도 바꿀 수 있어요).
+   META에 값을 넣으면 본문의 같은 칸(data-k)을 직접 고친 글자도 덮어써요. 이 다섯 가지는 여기서만 고쳐 주세요.
+   화면 캡처를 이 파일 옆 images 폴더에 점선 칸의 이름(images/02.png 등, .jpg도 돼요)으로 저장하면 저절로 들어가요. */
+const META = {
+  app: '카카오맵',
+  feature: '친구위치',
+  name: '배진혁',
+  sid: '20231675',
+  course: '소셜미디어 · 플랫폼의 소셜화',
+  accent: '#2470F5',
+  guide: false,
+};
+</script>
+<style>
+:root{
+  --accent:#3156D3;
+  --acc-soft:color-mix(in srgb,var(--accent) 9%,#fff);
+  --acc-line:color-mix(in srgb,var(--accent) 38%,#fff);
+  --ink:#18202B; --muted:#5A6573; --faint:#8A94A3; --line:#DDE2E9; --soft:#F1F3F6; --bg:#F7F8FA; --card:#fff;
+  --good:#17845A; --good-soft:#E2F3EB; --warn:#A8650A; --warn-soft:#FDF0DC; --bad:#BE3A2A; --bad-soft:#FBE7E3;
+  --guide:#FFF3C4; --guide-line:#E3BE4F; --guide-ink:#674C00;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#10141A}
+body{font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);word-break:keep-all;line-height:1.45}
+ul,ol{list-style:none}
+a{color:inherit;text-underline-offset:3px}
+
+/* 1920×1080 무대를 창 크기에 맞춰 축소·확대 */
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--bg)}
+section{position:absolute;inset:0;padding:72px 112px 112px;display:flex;flex-direction:column;gap:30px;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s .4s}
+section.on{opacity:1;visibility:visible;transition:opacity .4s ease}
+.body{flex:1;min-height:0}
+
+/* 머리글: 왼쪽 장 번호·질문, 오른쪽 작성 안내 */
+.hd{display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:start}
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:700;color:var(--muted);margin-bottom:12px}
+.eyebrow .no{font-size:20px;font-weight:900;color:#fff;background:var(--accent);padding:3px 12px;border-radius:8px;font-variant-numeric:tabular-nums}
+.eyebrow .tier{font-size:18px;font-weight:800;color:var(--accent);padding:2px 12px;border-radius:999px;border:2px solid var(--acc-line)}
+h2{font-size:48px;font-weight:900;line-height:1.22;letter-spacing:-.02em;text-wrap:balance}
+
+/* 작성 안내: 발표 모드에서는 자리만 남기고 숨겨요(두 모드의 배치를 같게 하려고) */
+.hint{font-size:18px;line-height:1.55;color:var(--guide-ink);background:var(--guide);border:1.5px dashed var(--guide-line);border-radius:14px;padding:12px 18px}
+.hint::before{content:"작성 안내";display:block;font-size:14px;font-weight:800;letter-spacing:.08em;margin-bottom:2px}
+.hint b{font-weight:800}
+.hint code{font:700 16px ui-monospace,Menlo,monospace;background:rgba(103,76,0,.1);padding:0 5px;border-radius:4px}
+body:not(.guide) .hint{visibility:hidden}
+
+/* 공통 부품 */
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 26px;box-shadow:0 6px 20px rgba(24,32,43,.05)}
+.col{display:flex;flex-direction:column;gap:18px;min-width:0}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.k{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:800;color:var(--accent);margin-bottom:6px}
+.v{font-size:25px;font-weight:700;line-height:1.4}
+.d{font-size:21px;color:var(--muted);line-height:1.5}
+.sub{font-size:20px;font-weight:800;color:var(--muted)}
+.ic{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+h3 .ic{width:1.05em;height:1.05em;color:var(--accent)}
+.num{flex:none;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;font-size:21px;font-weight:900;font-style:normal;display:flex;align-items:center;justify-content:center}
+.src{position:absolute;left:112px;right:440px;bottom:40px;font-size:16px;color:var(--muted)}
+
+/* 화면 자리: 안에 <img src="images/…">를 넣으면 점선과 안내 글자가 사라져요 */
+.shot{position:relative;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:2.5px dashed #B7C0CC;border-radius:24px;background:repeating-linear-gradient(135deg,#EDF0F4 0 14px,#F4F6F9 14px 28px);color:var(--faint);font-size:19px;font-weight:700;text-align:center;padding:14px;overflow:hidden}
+.shot .ic{width:40px;height:40px}
+.shot small{font:500 14px ui-monospace,Menlo,monospace;color:var(--faint)}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+.shot:has(img){border:1px solid var(--line);background:#fff;padding:0}
+.shot:has(img)>:not(img){display:none}
+.phone{width:var(--w,300px);aspect-ratio:9/19.5;border-radius:34px}
+
+/* 태그: 공식 설명 / 내 해석 / 확인됨 / 가능성 / 계획 */
+.tag{display:inline-flex;align-items:center;gap:6px;width:fit-content;font-size:16px;font-weight:800;padding:3px 12px;border-radius:999px;white-space:nowrap}
+.tag.off{background:var(--accent);color:#fff}
+.tag.mine{border:2px dashed var(--accent);color:var(--accent);padding:1px 10px}
+.tag.ok,.tag.g{background:var(--good-soft);color:var(--good)}
+.tag.maybe{background:var(--warn-soft);color:var(--warn)}
+.tag.b{background:var(--bad-soft);color:var(--bad)}
+.tag.plan{background:var(--ink);color:#fff}
+.tag.q{border:2px dashed #B7C0CC;color:var(--faint);padding:1px 10px}
+
+/* 고른 항목 강조: class에 pick을 붙이면 테두리와 표시가 생겨요 */
+.pick{position:relative;border:2.5px solid var(--accent)!important;background:var(--acc-soft)!important}
+.pick::before{position:absolute;top:-15px;right:22px;font-size:15px;font-weight:800;color:#fff;background:var(--accent);padding:3px 12px;border-radius:999px}
+
+/* 1 표지 */
+.cover{justify-content:center}
+.cover::before{content:"";position:absolute;right:-220px;top:-160px;width:980px;height:980px;border-radius:50%;background:var(--acc-soft)}
+.cv{position:relative;display:grid;grid-template-columns:1fr auto;gap:80px;align-items:center}
+.cover .eyebrow{font-size:26px}
+.cover h1{font-size:96px;font-weight:900;line-height:1.16;letter-spacing:-.03em;margin:14px 0 40px}
+.cover .hl{color:var(--accent)}
+.cq{display:flex;align-items:center;gap:18px;width:fit-content;font-size:32px;font-weight:700;padding:20px 30px;background:#fff;border-left:6px solid var(--accent);border-radius:0 16px 16px 0;box-shadow:0 6px 20px rgba(24,32,43,.06)}
+.cq .k{margin:0;font-size:18px;white-space:nowrap}
+.who{display:flex;align-items:center;gap:18px;margin-top:48px;font-size:28px;font-weight:700;color:var(--muted)}
+.who i{width:2px;height:24px;background:var(--line)}
+.cv .shot{--w:340px;box-shadow:0 24px 60px rgba(24,32,43,.12)}
+.cover .hint{position:absolute;left:112px;bottom:36px;max-width:880px}
+
+/* 2 선정 이유 */
+.g2{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start}
+.w3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.w3 div{padding:12px 18px;border-radius:14px;background:var(--soft)}
+.w3 dt{font-size:16px;font-weight:800;color:var(--muted)}
+.w3 dd{font-size:23px;font-weight:700;margin-top:2px}
+.scope{display:flex;align-items:center;gap:26px;padding:16px 24px;border-radius:16px;border:2px solid var(--ink);font-size:21px;background:#fff}
+.scope .sk{flex:none;font-size:17px;font-weight:900;color:#fff;background:var(--ink);padding:4px 12px;border-radius:8px}
+.scope b{color:var(--accent);margin-right:8px}
+
+/* 3 Tier 1 배경 */
+.t1{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:start}
+.cmp{display:flex;align-items:center;gap:16px}
+.cmp figure,.ba figure{display:flex;flex-direction:column;align-items:center;gap:12px}
+.cmp figcaption,.ba figcaption{font-size:20px;font-weight:800}
+.cmp .arr,.ba .arr{font-size:40px;font-weight:900;color:var(--faint)}
+.press{padding:20px 26px}
+.press.pick::before{content:"이 기능과 관련이 큰 압력"}
+.said{display:flex;flex-direction:column;gap:10px}
+.said.mine{background:transparent;border:2px dashed var(--acc-line);box-shadow:none}
+.said .cite{font-size:16px;color:var(--muted)}
+
+/* 4 Tier 2 작동 방식 */
+.t2{display:flex;flex-direction:column;gap:18px}
+.flow{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:56px}
+.step{position:relative;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;padding:20px}
+.step+.step::before{content:"→";position:absolute;left:-47px;top:50%;transform:translateY(-50%);font-size:38px;font-weight:900;color:var(--accent)}
+.step .shot{--w:186px;border-radius:26px}
+.step .txt{display:flex;flex-direction:column;gap:10px;padding-top:4px}
+.step .k{margin:0;font-size:21px}
+.mrow{display:flex;gap:18px}
+.mrow>*{flex:1;min-width:0}
+.mrow .evi{flex:1.3}
+.mech{display:flex;flex-direction:column;gap:6px;padding:18px 22px;transition:opacity .2s}
+.mech h3{display:flex;align-items:center;gap:10px;font-size:25px;font-weight:900}
+.mech.pick::before{content:"이 기능의 중심"}
+.mrow:has(.pick) .mech:not(.pick){opacity:.45}
+.evi{border-left:6px solid var(--ink)}
+.evi .k{color:var(--ink)}
+
+/* 5 Tier 3 결과 */
+.t3{display:grid;grid-template-columns:1.08fr 1fr;grid-template-rows:1fr auto;gap:22px 28px}
+.stock{display:grid;grid-template-columns:auto 1fr;gap:22px;min-height:0}
+.stock .shot{--w:214px;align-self:start}
+.tiles{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:14px}
+.tile{display:flex;flex-direction:column;gap:6px;padding:18px 20px}
+.tile h3{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:900}
+.tile .v{font-size:23px;color:var(--accent)}
+.tile .d{font-size:18px}
+.move{display:flex;flex-direction:column;gap:18px;padding:24px 28px}
+.move h3,.cpt h3{display:flex;align-items:center;gap:10px;font-size:25px;font-weight:900}
+.apps{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px}
+.apps span{font-size:23px;font-weight:800;text-align:center;padding:14px;border-radius:16px;border:2px solid var(--line);background:var(--soft)}
+.apps .now{border-color:var(--accent);background:var(--acc-soft);color:var(--accent)}
+.apps .arr{border:0;background:none;padding:0;font-size:34px;color:var(--faint)}
+.lose{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
+.lose>div{padding:16px 18px;border-radius:14px;background:var(--soft)}
+.lose li{font-size:20px;line-height:1.45;padding-left:18px;position:relative;margin-top:6px}
+.lose li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--muted)}
+.cpts{grid-column:1/-1;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:18px}
+.cpt{display:flex;flex-direction:column;gap:8px;padding:18px 22px}
+.cpt .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+/* 6 Molinillo 5요인 */
+.mol{width:100%;border-collapse:separate;border-spacing:0 10px;margin-top:-10px}
+.mol thead th{font-size:17px;font-weight:800;color:var(--muted);text-align:left;padding:0 26px}
+.mol tbody th,.mol tbody td{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:15px 26px;vertical-align:middle;text-align:left}
+.mol tbody th{width:560px;border-left:1px solid var(--line);border-radius:16px 0 0 16px}
+.mol tbody th b{display:block;font-size:26px;font-weight:900}
+.mol tbody th small{display:block;font-size:18px;font-weight:500;color:var(--muted);margin-top:2px}
+.mol td.r{width:210px;text-align:center}
+.mol td:last-child{border-right:1px solid var(--line);border-radius:0 16px 16px 0;font-size:22px;line-height:1.45}
+.rate{display:inline-block;min-width:130px;font-size:22px;font-weight:900;padding:6px 16px;border-radius:12px;border:2px dashed #B7C0CC;color:var(--faint)}
+.rate.s{background:var(--good);border:2px solid var(--good);color:#fff}
+.rate.m{background:var(--warn-soft);border:2px solid #E3B566;color:var(--warn)}
+.rate.w{background:var(--bad-soft);border:2px solid #E5A196;color:var(--bad)}
+.rate.n{background:var(--soft);border:2px solid var(--line);color:var(--muted)}
+.legend{display:flex;align-items:center;gap:12px;font-size:17px;color:var(--muted);margin-top:4px}
+.legend .rate{min-width:0;font-size:16px;padding:2px 12px;border-radius:8px}
+
+/* 7 강점과 한계 */
+.t7{display:flex;flex-direction:column;gap:22px}
+.sw2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.sw{display:grid;grid-template-columns:auto 1fr;gap:20px 26px;padding:26px 30px;align-content:start}
+.sw.good{border-top:6px solid var(--good)}
+.sw.bad{border-top:6px solid var(--bad)}
+.sw .top{grid-column:1/-1;display:flex;flex-direction:column;gap:10px}
+.sw h3{font-size:31px;font-weight:900;line-height:1.3}
+.sw .shot{--w:206px;align-self:start}
+.sw dl{display:flex;flex-direction:column;gap:14px}
+.sw dt{font-size:17px;font-weight:800;color:var(--muted)}
+.sw dd{font-size:22px;line-height:1.5}
+.why1{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;padding:18px 28px;border-radius:18px;background:var(--ink);color:#fff}
+.why1 .k{margin:0;color:#C9D1DC}
+.why1 .v{font-size:24px}
+.why1 .go{font-size:19px;font-weight:800;white-space:nowrap;padding:8px 18px;border-radius:999px;background:var(--accent)}
+
+/* 8 개선안 */
+.t8{display:flex;flex-direction:column;gap:22px}
+.situ{display:grid;grid-template-columns:auto 1fr auto 1.4fr;align-items:center;gap:12px 20px;padding:16px 28px;border-radius:18px;background:var(--acc-soft);border:2px solid var(--acc-line)}
+.situ .k{margin:0;white-space:nowrap}
+.situ .k+.v+.k{padding-left:20px;border-left:2px solid var(--acc-line)}
+.prop{flex:1;min-height:0;display:grid;grid-template-columns:auto 1fr;gap:48px}
+.ba{display:flex;align-items:center;gap:16px}
+.ba .shot{--w:248px}
+.ba .new .shot{border-color:var(--accent)}
+.ba .new figcaption{color:var(--accent)}
+.steps{display:flex;flex-direction:column;gap:14px}
+.steps li{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;padding:18px 24px}
+.steps .k{margin-bottom:4px}
+.chg{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:16px;align-items:center;padding:16px 24px;border-radius:18px;background:var(--ink);color:#fff}
+.chg .k{margin:0;color:#C9D1DC}
+.chg span{font-size:21px;line-height:1.4}
+.chg i{font-style:normal;font-size:28px;font-weight:900;color:var(--acc-line)}
+
+/* 9 기대 효과와 예상 한계 */
+.fx{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:24px;align-items:stretch}
+.fx>.card{--c:var(--accent);display:flex;flex-direction:column;gap:14px;padding:26px 28px;border-top:6px solid var(--c)}
+.fx .good{--c:var(--good)}
+.fx .bad{--c:var(--bad)}
+.fx .plan{--c:var(--ink)}
+.fx h3{display:flex;align-items:center;gap:10px;font-size:28px;font-weight:900;color:var(--c)}
+.fx h3 .ic{color:var(--c)}
+.fx h3 .tag{margin-left:auto}
+.fx li{font-size:22px;line-height:1.45;padding:14px 18px;border-radius:14px;background:var(--soft)}
+.fx ul{display:flex;flex-direction:column;gap:12px}
+.measure li{display:flex;flex-direction:column;gap:4px}
+.measure b{font-size:20px;font-weight:900}
+.measure span{font-size:19px;color:var(--muted)}
+.fx .how{margin-top:auto;font-size:19px;color:var(--muted);padding-top:12px;border-top:1px solid var(--line)}
+
+/* 10 결론 */
+.end{justify-content:center;gap:44px}
+.end::before{content:"";position:absolute;left:0;top:0;bottom:0;width:18px;background:var(--accent)}
+.concl{font-size:56px;font-weight:800;line-height:1.55;letter-spacing:-.015em;max-width:1560px;text-wrap:pretty}
+.concl em{font-style:normal;color:var(--accent);background:var(--acc-soft);padding:0 6px;border-radius:10px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.concl em.neg{color:var(--bad);background:var(--bad-soft)}
+.qa{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:700;color:var(--muted)}
+.end .hint{position:absolute;right:112px;top:72px;width:520px}
+
+/* 부록 */
+.refs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-content:start}
+.refs h3{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:900;padding-bottom:14px;margin-bottom:16px;border-bottom:2px solid var(--ink)}
+.refs ol{counter-reset:r;display:flex;flex-direction:column;gap:14px}
+.refs li{counter-increment:r;position:relative;padding-left:30px;font-size:19px;line-height:1.55}
+.refs li::before{content:counter(r);position:absolute;left:0;font-weight:900;color:var(--accent)}
+
+/* 위 진행 막대(권장 시간 비율) · 아래 쪽번호 */
+#prog{position:absolute;left:0;right:0;top:0;height:8px;display:flex;gap:3px;z-index:5}
+#prog i{background:var(--line);transition:background .3s}
+#prog i.done{background:var(--acc-line)}
+#prog i.on{background:var(--accent)}
+#foot{position:absolute;right:112px;bottom:38px;display:flex;align-items:center;gap:16px;font-size:20px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+#foot .t{font-size:16px;font-weight:800;color:var(--guide-ink);background:var(--guide);border:1.5px dashed var(--guide-line);padding:2px 12px;border-radius:999px}
+body:not(.guide) #foot .t{display:none}
+#help{position:fixed;left:16px;bottom:12px;font:13px/1.4 system-ui,sans-serif;color:#8C97A6;opacity:.8}
+:fullscreen #help,body:not(.guide) #help{display:none}
+
+@media (prefers-reduced-motion:reduce){section,#prog i{transition:none}}
+/* 인쇄·PDF 저장: 한 장에 슬라이드 하나 (작성 안내는 빼고) */
+@media print{
+  @page{size:1920px 1080px;margin:0}
+  html,body{height:auto;overflow:visible;background:none}
+  #stage{position:static;transform:none!important;height:auto;overflow:visible;background:none}
+  section{position:relative;height:1080px;overflow:hidden;opacity:1;visibility:visible;transition:none;break-after:page;background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hint{visibility:hidden!important}
+  #prog,#foot,#help{display:none}
+}
+</style>
+</head>
+<body>
+<!-- 아이콘 모음 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.2a6 6 0 0 1 3.5 5.8"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6L3.5 8.5"/><path d="M3.5 3.5v5h5M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5l9 4.5 9-4.5M12 12v9"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24"><path d="M14 4h5v16h-5M10 8l4 4-4 4M14 12H3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-net" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="5.5" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7 15h10"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h7"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 9h6M9 12h4"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-9 9"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+</svg>
+
+<div id="stage">
+  <div id="prog" aria-hidden="true"></div>
+
+<section class="cover" data-time="10">
+<div class="cv"><div>
+<p class="eyebrow" data-k="course">소셜미디어 · 플랫폼의 소셜화</p>
+<h1>「<span data-k="app">카카오맵</span>의<br><span class="hl" data-k="feature">친구위치</span> 분석」</h1>
+<p class="cq"><span class="k">분석 질문</span>연결은 유지하면서 위치 공개는 내가 선택할 수 있을까?</p>
+<p class="who"><span data-k="name">배진혁</span><i></i><span data-k="sid">20231675</span></p>
+</div><figure class="shot phone" style="--w:340px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></figure></div>
+<p class="src">화면: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> 공식 예시 · 분석 기준: 2026.10.16</p>
+</section>
+
+<section class="" data-time="50"><header class="hd"><div><p class="eyebrow"><span class="no">02</span>분석 대상과 선정 이유</p><h2>카카오맵에 관계와 대화가 더해진 기능</h2></div></header>
+<div class="body g2"><figure class="shot phone" style="--w:322px;aspect-ratio:246/497"><img src="images/435-main.png" alt="카카오맵 공식 일반지도 예시" style="inset:auto;left:-142.682927%;top:-36.418511%;width:528.455285%;height:160.965795%;object-fit:fill;max-width:none"></figure><div class="col">
+<div class="duo"><div class="card"><p class="k">앱의 기본 목적</p><p class="v">장소를 찾고 이동 경로를 확인</p></div><div class="card"><p class="k">분석할 소셜 기능</p><p class="v">친구의 위치를 보며 지도에서 대화</p></div></div>
+<div class="card"><p class="k">사용 경험의 범위</p><dl class="w3"><div><dt>상황</dt><dd>친구 위치 확인</dd></div><div><dt>함께 사용</dt><dd>연결된 친구들</dd></div><div><dt>목적</dt><dd>연락·모임 조율</dd></div></dl></div>
+<div class="card"><p class="k">선정 이유</p><p class="v">편리한 위치 확인이 지속적인 노출 부담으로 이어질 수 있습니다</p><p class="d">공유 중단 표시 때문에 그 선택을 설명해야 한다고 느끼는 경험에 주목했습니다.</p></div>
+<p class="scope"><span class="sk">분석 범위</span><span><b>포함</b>위치 확인·지도 대화·공개 통제</span><span><b>제외</b>러닝·맛집 목록</span></p>
+</div></div>
+<p class="src">경험: 발표자 진술 · 화면: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> 공식 예시(개인 앱 직접 캡처 아님)</p>
+</section>
+
+<section class="" data-time="45"><header class="hd"><div><p class="eyebrow"><span class="no">03</span><span class="tier">Tier 1</span>이 기능이 등장한 배경</p><h2>친구위치 도입과 플랫폼의 압력</h2></div></header>
+<div class="body t1"><div class="cmp">
+<figure><div class="shot phone" style="--w:262px;aspect-ratio:246/497"><img src="images/435-main.png" alt="카카오맵 공식 일반지도 예시" style="inset:auto;left:-142.682927%;top:-36.418511%;width:528.455285%;height:160.965795%;object-fit:fill;max-width:none"></div><figcaption>장소 검색과 길찾기</figcaption></figure><span class="arr" aria-hidden="true">→</span><figure><div class="shot phone" style="--w:262px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></div><figcaption>관계와 만남 지원</figcaption></figure>
+</div><div class="col"><p class="sub">강의 모형에 따른 분석</p>
+<div class="card press pick"><p class="v">기본 기능을 넘어 이용할 이유를 더합니다</p><p class="d">친구 확인과 만남 조율을 장소 탐색에 연결합니다. 차별화 압력에 대한 해석입니다.</p></div>
+<div class="card press"><p class="v">친구 확인이 재방문의 계기가 됩니다</p><p class="d">더 자주 열 가능성은 있지만, 친구위치의 체류시간 증가 효과는 공개 자료로 확인하지 못했습니다.</p></div>
+<div class="duo"><div class="card said"><span class="tag off">공식 설명</span><p class="d">현재 위치를 설명하는 수고를 줄이고 귀가·약속·이동을 돕는 기능</p><p class="cite"><a href="https://kakaomap.tistory.com/281" target="_blank" rel="noopener">카카오맵, 2019.11.04</a></p></div><div class="card said mine"><span class="tag mine">내 해석</span><p class="d">지도 이용에 기존 친구 관계를 연결해, 이동 전후에도 이용할 이유를 만들 수 있습니다.</p></div></div>
+</div></div><p class="src">공식 목적: <a href="https://kakaomap.tistory.com/281" target="_blank" rel="noopener">카카오맵, 2019.11.04</a> · 개편 화면: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> · 압력 분석은 강의 틀을 적용한 해석</p>
+</section>
+
+<section class="" data-time="85"><header class="hd"><div><p class="eyebrow"><span class="no">04</span><span class="tier">Tier 2</span>기능이 작동하는 방식</p><h2>위치를 보고 대화하며 만남을 조율합니다</h2></div></header>
+<div class="body t2"><ol class="flow">
+<li class="card step"><div class="shot phone" style="--w:186px;aspect-ratio:246/497"><img src="images/435-main.png" alt="카카오톡 공식 친구위치 초대 예시" style="inset:auto;left:-400.406504%;top:-36.418511%;width:528.455285%;height:160.965795%;object-fit:fill;max-width:none"></div><div class="txt"><i class="num">1</i><p class="k">보는 것</p><p class="v">친구위치 초대에 동의하고 그룹에 연결</p></div></li>
+<li class="card step"><div class="shot phone" style="--w:186px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></div><div class="txt"><i class="num">2</i><p class="k">내 반응</p><p class="v">지도에서 친구의 위치와 말풍선 확인</p></div></li>
+<li class="card step"><div class="shot phone" style="--w:186px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></div><div class="txt"><i class="num">3</i><p class="k">다음 행동</p><p class="v">지도 채팅이나 별도 연락으로 약속 조율</p></div></li>
+</ol><p class="sub">강의 메커니즘과 연결</p><div class="mrow">
+<div class="card mech"><h3><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>체류시간</h3><p class="d">친구 확인은 재방문 계기. 시간 증가량은 미확인.</p></div>
+<div class="card mech pick"><h3><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>실제 이용 전환</h3><p class="d">위치 정보와 대화가 연락·만남 판단으로 이어짐.</p></div>
+<div class="card mech"><h3><svg class="ic" aria-hidden="true"><use href="#i-loop"/></svg>데이터·추천 순환</h3><p class="d">공유 데이터의 추천 개선 효과는 확인하지 못함.</p></div>
+<div class="card evi"><p class="k">경험 근거</p><p class="d">위치만 확인한 경우와 지도 안에서 대화한 경우를 모두 사용했습니다.</p></div>
+</div></div><p class="src">화면·기능: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> 공식 예시 · 매출 전환이나 추천 성능 향상으로 해석하지 않음</p>
+</section>
+
+<section class="" data-time="50"><header class="hd"><div><p class="eyebrow"><span class="no">05</span><span class="tier">Tier 3</span>이용이 쌓인 뒤의 결과</p><h2>공동 이용과 관계의 이동 비용</h2></div></header>
+<div class="body t3"><div class="stock"><figure class="shot phone" style="--w:214px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></figure><div class="col"><p class="sub">함께 이용하며 만들어지는 것</p><div class="tiles">
+<div class="card tile"><h3><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>공유 그룹</h3><p class="v">친구 관계</p><p class="d">위치를 함께 보는 연결</p></div>
+<div class="card tile"><h3><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>소통</h3><p class="v">지도 위 대화</p><p class="d">상황을 설명하고 반응</p></div>
+<div class="card tile"><h3><svg class="ic" aria-hidden="true"><use href="#i-history"/></svg>사용 관행</h3><p class="v">확인하는 습관</p><p class="d">공동 이용으로 생길 가능성</p></div>
+<div class="card tile"><h3><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>기록·평판</h3><p class="v">근거 부족</p><p class="d">축적량·이전 손실 미측정</p></div>
+</div></div></div>
+<div class="card move"><h3><svg class="ic" aria-hidden="true"><use href="#i-door"/></svg>다른 위치공유 앱으로 옮긴다면</h3><div class="apps"><span class="now">카카오맵</span><span class="arr" aria-hidden="true">→</span><span>대안 위치공유 앱</span></div><div class="lose"><div><p class="k">함께 쓰던 편의</p><ul><li>지도와 대화의 연결</li><li>그룹의 공동 이용 방식</li></ul></div><div><p class="k">다시 맞출 것</p><ul><li>상대의 설치·동의</li><li>새 공유 그룹과 설정</li></ul></div></div></div>
+<div class="cpts"><div class="card cpt"><div class="row"><h3><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>사회적 락인</h3><span class="tag maybe">가능성</span></div><p class="d">함께 쓰는 관계가 전환 비용이 될 수 있음.</p></div><div class="card cpt"><div class="row"><h3><svg class="ic" aria-hidden="true"><use href="#i-net"/></svg>네트워크 외부성</h3><span class="tag mine">구조 해석</span></div><p class="d">함께 위치를 공유하는 친구가 있어야 쓸모가 생김.</p></div><div class="card cpt"><div class="row"><h3><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg>슈퍼앱화</h3><span class="tag n">확인 부족</span></div><p class="d">지도·소통 결합만으로 슈퍼앱 성과를 단정하기 어려움.</p></div></div>
+</div><p class="src">공유 그룹·대화: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> · 락인과 전환 비용은 구조적 해석이며 유지율 실측이 아님</p>
+</section>
+
+<section class="" data-time="70"><header class="hd"><div><p class="eyebrow"><span class="no">06</span>Molinillo 5요인 종합 평가</p><h2>실용적 정보와 사회적 현존감이 중심입니다</h2></div></header>
+<div class="body"><table class="mol"><thead><tr><th>요인</th><th>평가</th><th>사용 경험·기능 근거</th></tr></thead><tbody><tr><th><b>정보적 지지</b><small>다른 이용자의 정보·조언이 도움이 되는가</small></th><td class="r"><span class="rate m">보통</span></td><td>위치와 지도 대화가 모임 조율을 돕습니다. 조언·추천보다 실용 정보에 가깝습니다.</td></tr><tr><th><b>정서적 지지</b><small>공감·위로·격려를 얻는가</small></th><td class="r"><span class="rate n">근거 부족</span></td><td>채팅·반응 기능은 있지만, 위로·격려를 얻은 경험은 확인하지 못했습니다.</td></tr><tr><th><b>몰입 (Flow)</b><small>이용에 집중해 빠져드는가</small></th><td class="r"><span class="rate n">근거 부족</span></td><td>상시 공유 시간은 몰입의 증거가 아닙니다. 집중·시간 감각의 변화는 미측정입니다.</td></tr><tr><th><b>사회적 현존감</b><small>다른 사람의 존재와 연결을 느끼게 하는가</small></th><td class="r"><span class="rate s">강함</span></td><td>프로필·위치·말풍선이 친구의 존재를 지도 위에 표현합니다. 기능 구조 기준 평가입니다.</td></tr><tr><th><b>플랫폼 품질</b><small>편리함과 신뢰할 수 있는 통제를 제공하는가</small></th><td class="r"><span class="rate m">보통</span></td><td>지도와 소통의 결합은 편리하지만, 지속 노출과 중단 표시에는 부담을 느꼈습니다.</td></tr></tbody></table><p class="legend">정성 평가 <span class="rate s">강함</span><span class="rate m">보통</span><span class="rate w">약함</span><span class="rate n">근거 부족</span> 이용자 전체의 통계 점수가 아닙니다</p></div>
+<p class="src">평가 틀: <a href="https://doi.org/10.4067/S0718-18762018000200107" target="_blank" rel="noopener">Molinillo 외, 2018</a> · 전자상거래 연구의 요인을 앱 분석에 적용(웹사이트 품질을 플랫폼 품질로 표현)</p>
+</section>
+
+<section class="" data-time="50"><header class="hd"><div><p class="eyebrow"><span class="no">07</span>핵심 강점과 한계</p><h2>만남의 편리함과 공개 중단의 부담</h2></div></header>
+<div class="body t7"><div class="sw2">
+<div class="card sw good"><div class="top"><span class="tag g">강점</span><h3>관계와 장소를 한 화면에서 확인</h3></div><figure class="shot phone" style="--w:206px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 친구위치 지도 예시" style="inset:auto;left:-119.548872%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></figure><dl><div><dt>기능과 경험</dt><dd>친구 위치를 확인하고 지도에서 대화하며 연락·모임을 조율할 수 있습니다.</dd></div><div><dt>관련 요인</dt><dd>정보적 지지와 사회적 현존감</dd></div></dl></div>
+<div class="card sw bad"><div class="top"><span class="tag b">한계</span><h3>중단 선택이 해명 부담으로 이어질 수 있음</h3></div><figure class="shot phone" style="--w:206px;aspect-ratio:266/548"><img src="images/435-hide.png" alt="카카오맵 공식 내 위치 숨기기 안내" style="inset:auto;left:-268.796992%;top:-22.992701%;width:488.721805%;height:145.985401%;object-fit:fill;max-width:none"></figure><dl><div><dt>이미 있는 통제 수단</dt><dd>그룹별 숨기기·예약, 1~6시간 시간그룹</dd></div><div><dt>사용 경험에서 제기한 문제</dt><dd>상대에게 공유를 껐다는 표시가 나와, 그 이유를 물을 수 있습니다.</dd></div><div><dt>관련 요인</dt><dd>플랫폼 품질의 공개 통제 경험</dd></div></dl></div>
+</div><div class="why1"><p class="k">우선 보완할 점</p><p class="v">연결을 유지하면서, 공개 중단 이유를 드러내지 않을 선택권</p><span class="go">8장 개선안으로 →</span></div></div>
+<p class="src">본인 숨기기 화면: <a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a> · 시간그룹: <a href="https://kakaomap.tistory.com/443" target="_blank" rel="noopener">카카오맵, 2026.04.21</a> · 상대의 꺼짐 표시는 사용자 진술(직접 캡처 미확보)</p>
+</section>
+
+<section class="" data-time="60"><header class="hd"><div><p class="eyebrow"><span class="no">08</span>개선안</p><h2>중단 이유를 드러내지 않는 공개 통제</h2></div></header>
+<div class="body t8"><p class="situ"><span class="k">해결할 한계</span><span class="v">공유 중단의 해명 부담</span><span class="k">적용 상황</span><span class="v">친구 연결은 유지하고 지금의 노출만 줄이고 싶을 때</span></p>
+<div class="prop"><div class="ba"><figure><div class="shot phone" style="--w:248px"><img src="images/proposal-active.png" alt="비공식 제안: 본인 화면에 위치 공유 중 표시"></div><figcaption>본인: 공유 중·중단 선택</figcaption></figure><span class="arr" aria-hidden="true">→</span><figure class="new"><div class="shot phone" style="--w:248px"><img src="images/proposal-history.png" alt="비공식 제안: 상대에게 마지막 공유 기록과 시각만 표시"></div><figcaption>상대: 마지막 기록 확인</figcaption></figure></div><div class="col"><ol class="steps">
+<li class="card"><i class="num">1</i><div><p class="k">공유를 시작할 때</p><p class="v">기본은 갱신 OFF. 친구위치에서 동의한 경우에만 이번 앱 사용 중 공유합니다.</p></div></li>
+<li class="card"><i class="num">2</i><div><p class="k">공유를 멈출 때</p><p class="v">직접 중단하거나 앱을 나가면 갱신을 멈춥니다. 다시 열어도 자동 재개하지 않습니다.</p></div></li>
+<li class="card"><i class="num">3</i><div><p class="k">상대에게 보이는 것</p><p class="v">마지막 공유 위치와 시각은 남기되, 꺼짐·종료 이유를 별도로 표시하지 않습니다.</p></div></li>
+</ol><p class="chg"><span class="k">추가 선택권</span><span>마지막 기록 유지</span><i aria-hidden="true">↔</i><span>완전 비공개·기록 삭제</span></p><p class="d">기존 시간·상시 공유 선택지도 유지합니다. 새 정책은 제안이며 미구현입니다.</p></div></div></div>
+<p class="src">화면: 내장 ImageGen 제안 목업 · 과거 위치를 현재로 단정하지 않음 · 동일 세션·복귀 재동의 조합의 현행 제공 여부는 미확인</p>
+</section>
+
+<section class="" data-time="45"><header class="hd"><div><p class="eyebrow"><span class="no">09</span>기대 효과와 예상 한계</p><h2>공개자료는 필요성을 뒷받침합니다</h2></div></header>
+<div class="body fx"><div class="card good"><h3><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>기대 효과<span class="tag maybe">미검증</span></h3><ul><li>원할 때만 위치를 공개하는 통제감</li><li>중단 이유를 설명해야 하는 부담 완화</li><li>친구 연결을 유지한 채 공개 범위 조절</li></ul></div>
+<div class="card bad"><h3><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg>예상 한계</h3><ul><li>앱 전환 시 갱신 중단과 재동의로 만남 조율이 번거로워짐</li><li>마지막 확인 시각으로 중단을 추측할 수 있음</li><li>오래된 위치를 현재로 오해할 가능성</li></ul><p class="how">추가 검증: 해명 부담 점수, 모의 질문 선택률, 현재 위치 오인률</p></div>
+<div class="card plan"><h3><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg>필요성의 공개 근거<span class="tag plan">해외 조사</span></h3><ul class="measure">
+<li><b>45% · 추적을 원하지 않음</b><span>미국 조사에서 위치 기능을 끄는 이유로 선택</span></li>
+<li><b>41% · 일부 시간에만 필요</b><span>같은 하위집단의 응답. 복수응답으로 합산 불가</span></li>
+<li><b>13.6% · 원할 때 연인 위치를 추적할 기대</b><span>호주 성인 2,046명 중 합당하다는 태도. 피해율 아님</span></li>
+</ul><p class="how">Harris: 전체 1,054명 중 일부 시간 끄는 하위집단, 비가중 n=764. 기기 위치 기능 전반의 가중 응답입니다. 카카오맵 이용자 비율·본 개선안의 효과가 아닙니다.</p></div></div>
+<p class="src"><a href="https://theharrispoll.com/wp-content/uploads/2022/08/NYT_Location-Sharing_data.pdf" target="_blank" rel="noopener">Harris·NYT, 2022, Q5</a> · <a href="https://theharrispoll.com/articles/location-sharing-features/" target="_blank" rel="noopener">Harris 조사 방법</a> · <a href="https://www.esafety.gov.au/newsroom/media-releases/track-harass-repeat-love-in-the-age-of-tech" target="_blank" rel="noopener">eSafety, 2024.11.25</a> · 효과 비교 실험은 실시하지 않음</p>
+</section>
+
+<section class="end" data-time="15">
+<p class="eyebrow"><span class="no">10</span>결론</p>
+<p class="concl">친구위치는 지도 위에서 <em>만남과 소통</em>을 돕습니다.<br>위치 공개를 멈추는 선택에는 <em class="neg">해명 부담</em>이 생길 수 있습니다.<br>그래서 <em>갱신 시점과 중단 이유의 노출을 본인이 고르는 방식</em>을 제안합니다.</p>
+<p class="qa"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>질의응답</p>
+<p class="src">공개 수치는 개선의 필요성을 뒷받침하는 자료이며, 제안의 효과는 추가 검증 대상입니다.</p>
+</section>
+
+<section class="" data-time="0"><header class="hd"><div><p class="eyebrow"><span class="no">부록</span>참고자료</p><h2>참고자료와 근거의 범위</h2></div></header>
+<div class="body refs"><div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg>공식 기능·강의</h3><ol>
+<li><a href="https://kakaomap.tistory.com/281" target="_blank" rel="noopener">카카오맵, 2019.11.04</a><br>톡친구 위치공유 도입 목적</li><li><a href="https://kakaomap.tistory.com/435" target="_blank" rel="noopener">카카오맵, 2025.11.12</a><br>친구위치 개편·그룹별 숨기기·예약</li><li><a href="https://kakaomap.tistory.com/443" target="_blank" rel="noopener">카카오맵, 2026.04.21</a><br>기본 1시간·최대 6시간 시간그룹</li><li>「플랫폼의 소셜화」 5주차 강의자료, 39~40쪽. 발표 8분과 Q&A 2분, 별도 한 장 요약본.</li>
+</ol></div><div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-quote"/></svg>분석·통계</h3><ol>
+<li><a href="https://doi.org/10.4067/S0718-18762018000200107" target="_blank" rel="noopener">Molinillo 외, 2018</a><br><i>A Social Commerce Intention Model for Traditional E-Commerce Sites.</i> 13(2), 80–93. 원래 전자상거래 연구의 평가 틀을 적용.</li>
+<li><a href="https://theharrispoll.com/wp-content/uploads/2022/08/NYT_Location-Sharing_data.pdf" target="_blank" rel="noopener">Harris·NYT, 2022, Q5</a> · <a href="https://theharrispoll.com/articles/location-sharing-features/" target="_blank" rel="noopener">Harris 조사 방법</a><br>2022.07.29~08.01, 미국 전체 n=1,054. Q5 비가중 n=764, 가중 N=773, 복수응답.</li>
+<li><a href="https://www.esafety.gov.au/newsroom/media-releases/track-harass-repeat-love-in-the-age-of-tech" target="_blank" rel="noopener">eSafety, 2024.11.25</a><br>호주 성인 n=2,046. 13.6%는 연인 추적 기대에 대한 태도.</li>
+</ol></div><div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-image"/></svg>화면·설계 선례</h3><ol>
+<li>1~5·7장: 카카오맵 공식 공개 예시의 해당 화면 영역. 개인 앱 직접 캡처로 표시하지 않음.</li><li>8장: 내장 ImageGen으로 제작한 비공식 제안 시안. 민지·서연·장소는 가상 설정.</li><li><a href="https://www.cs.cmu.edu/~CompThink/probes/papers/CHI2009.pdf" target="_blank" rel="noopener">Tsai 외, CHI 2009</a><br>n=56. 위치 제공 불가 사유를 구분하지 않는 설계 선례. 해당 표현의 효과를 분리 검증한 연구는 아님.</li><li>마지막 위치 유지·복귀 재동의는 제안. 최신 앱의 정확한 정책 조합은 직접 검증하지 않음.</li>
+</ol></div></div>
+</section>
+
+  <div id="foot"></div>
+</div>
+<p id="help"></p>
+
+<script>
+const stage = document.getElementById('stage');
+const slides = [...stage.querySelectorAll('section')];
+const foot = document.getElementById('foot');
+const prog = document.getElementById('prog');
+const help = document.getElementById('help');
+let cur = 0;
+
+// META 값을 data-k 자리에 채우고 강조색·작성 모드를 적용해요
+document.documentElement.style.setProperty('--accent', META.accent);
+for (const el of document.querySelectorAll('[data-k]')) {
+  const v = META[el.dataset.k];
+  if (v && !/^\[.*\]$/.test(v)) el.textContent = v;   // META를 아직 안 고쳤으면 본문 글자를 그대로 둬요
+}
+// data-josa: 앞 낱말 받침에 맞춰 조사를 골라요(예: 스토리는, 오픈채팅은). 한글이 아니면 앞 글자(은)를 써요
+const batchim = w => { const c = w.trim().slice(-1).charCodeAt(0) - 0xAC00; return !(c >= 0 && c < 11172) || c % 28 > 0; };
+for (const el of document.querySelectorAll('[data-josa]')) el.textContent = el.dataset.josa[batchim(el.previousElementSibling.textContent) ? 0 : 1];
+// 점선 칸에 적힌 파일(images/02.png 등)이 있으면 넣어요. png가 없으면 같은 이름의 jpg를 찾아요
+for (const s of document.querySelectorAll('.shot small')) {
+  const img = new Image();
+  img.alt = s.previousElementSibling?.textContent || '';
+  img.onload = () => s.parentElement.append(img);
+  img.onerror = () => { if (img.src.endsWith('.png')) img.src = img.src.slice(0, -4) + '.jpg'; };
+  img.src = s.textContent.trim();
+}
+document.title = `${META.app}의 ${META.feature} 분석`;
+document.body.classList.toggle('guide', META.guide);
+
+// 아직 [ ]로 남은 빈칸 수를 세어요(작성 안내는 빼요)
+const blanks = slides.map(s => {
+  const c = s.cloneNode(true);
+  c.querySelectorAll('.hint').forEach(h => h.remove());
+  return (c.textContent.match(/\[[^\]]*\]/g) || []).length;
+});
+const allBlanks = blanks.reduce((a, b) => a + b, 0);
+
+// 진행 막대: 본발표 장(data-time > 0)만 권장 시간 비율로 나눠요
+const timed = slides.filter(s => +s.dataset.time > 0);
+const total = timed.reduce((a, s) => a + +s.dataset.time, 0);
+prog.innerHTML = timed.map(s => `<i style="flex:${s.dataset.time}"></i>`).join('');
+const segs = [...prog.children];
+const sec = t => t < 60 ? `${t}초` : `${Math.floor(t / 60)}분${t % 60 ? ` ${t % 60}초` : ''}`;
+const clock = t => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`;
+
+function render() {
+  const s = slides[cur], t = +s.dataset.time, ti = timed.indexOf(s);
+  const until = timed.slice(0, ti + 1).reduce((a, x) => a + +x.dataset.time, 0);
+  const tip = (t ? `권장 ${sec(t)} · 여기까지 ${clock(until)} / ${clock(total)}` : '부록 · 발표 시간 밖') + (blanks[cur] ? ` · 빈칸 ${blanks[cur]}` : '');
+  foot.innerHTML = `<span class="t">${tip}</span>${cur ? `${cur + 1} / ${slides.length}` : ''}`;
+  help.textContent = `← → 넘기기 · F 전체 화면 · G 작성 안내 ${document.body.classList.contains('guide') ? '끄기' : '켜기'}` + (allBlanks ? ` · 남은 빈칸 ${allBlanks}개` : '');
+}
+
+function go(n) {
+  cur = Math.max(0, Math.min(slides.length - 1, n));
+  const s = slides[cur], ti = timed.indexOf(s);
+  slides.forEach(x => x.classList.toggle('on', x === s));
+  segs.forEach((g, i) => { g.className = ti < 0 || i < ti ? 'done' : i === ti ? 'on' : ''; });
+  render();
+  history.replaceState(null, '', '#' + (cur + 1));
+}
+
+function fit() {
+  const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+  stage.style.transform = `scale(${k}) translate(-50%,-50%)`;
+}
+
+// 한글 입력 상태에서도 되도록 e.code로 F·G를 받아요
+addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); go(cur + 1); }
+  else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); go(cur - 1); }
+  else if (e.key === 'Home') go(0);
+  else if (e.key === 'End') go(slides.length - 1);
+  else if (e.code === 'KeyF') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {});
+  else if (e.code === 'KeyG') { document.body.classList.toggle('guide'); render(); }
+});
+// 클릭하면 다음 장, 휴대폰은 왼쪽으로 밀면 다음·오른쪽으로 밀면 이전
+let swipeX = null, swipedAt = 0;
+stage.style.touchAction = 'pan-y pinch-zoom';
+stage.addEventListener('click', e => { if (Date.now() - swipedAt > 400 && !e.target.closest('a')) go(cur + 1); });
+stage.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') swipeX = e.clientX; });
+stage.addEventListener('pointerup', e => {
+  if (swipeX === null) return;
+  const dx = e.clientX - swipeX; swipeX = null;
+  if (Math.abs(dx) < 50) return;
+  swipedAt = Date.now(); go(cur + (dx < 0 ? 1 : -1));
+});
+stage.addEventListener('pointercancel', () => { swipeX = null; });
+addEventListener('resize', fit);
+addEventListener('hashchange', () => go((parseInt(location.hash.slice(1), 10) || 1) - 1));
+fit();
+go((parseInt(location.hash.slice(1), 10) || 1) - 1);
+</script>
+</body>
+</html>
